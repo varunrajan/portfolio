@@ -1,0 +1,75 @@
+---
+title: Mobile-First E-Commerce Platform
+role: Full-Stack Engineer & Product Lead
+company: RetailStart
+dates: 03/2023 - 12/2023
+tldr: Built mobile-first e-commerce platform from scratch, processing $2M+ in transactions during first quarter and achieving 95+ Lighthouse performance score.
+challenge: |
+  Needed to build a modern e-commerce platform that could compete with established players. 
+  Key requirements: mobile-first design, fast performance, scalable architecture, and ability 
+  to handle high traffic during peak shopping seasons. Budget and timeline were tight.
+actions:
+  - Architected Next.js application with server-side rendering for SEO
+  - Implemented GraphQL API with Apollo Server for flexible data fetching
+  - Built responsive design system optimized for mobile devices
+  - Integrated payment processing with Stripe
+  - Set up CI/CD pipeline with automated testing
+  - Implemented caching strategies for performance optimization
+  - Created admin dashboard for inventory and order management
+outcomes:
+  - Processed $2M+ in transactions during first quarter
+  - Achieved 95+ Lighthouse performance score on mobile
+  - 60% of traffic from mobile devices with excellent conversion rates
+  - Zero downtime during Black Friday traffic spike (10x normal traffic)
+  - Reduced page load time to under 2 seconds on 3G networks
+artifacts:
+  - Production application (Next.js + GraphQL)
+  - Admin dashboard
+  - API documentation
+  - Performance optimization report
+tags:
+  - Next.js
+  - GraphQL
+  - E-Commerce
+  - Mobile UX
+  - Performance
+---
+
+## Overview
+
+This project involved building a complete e-commerce platform from the ground up, with a focus on mobile-first design and performance. The platform needed to handle everything from product catalog to checkout.
+
+## Architecture Decisions
+
+We chose Next.js for its excellent SSR capabilities and performance optimizations. The GraphQL API provided flexibility for the frontend to request exactly the data needed, reducing payload sizes.
+
+Key architectural decisions:
+
+- **Next.js App Router** for optimal routing and code splitting
+- **GraphQL** for flexible, efficient data fetching
+- **PostgreSQL** for reliable data storage
+- **Redis** for caching and session management
+- **Stripe** for secure payment processing
+
+## Mobile-First Approach
+
+Since 60% of our target users shop on mobile, we prioritized mobile experience:
+
+- Touch-friendly interface with large tap targets
+- Optimized images with Next.js Image component
+- Progressive Web App capabilities
+- Offline support for browsing catalog
+
+## Performance Optimization
+
+Performance was critical for conversion rates. We achieved:
+
+- Code splitting at route level
+- Image optimization with WebP format
+- GraphQL query batching and caching
+- CDN for static assets
+- Server-side rendering for initial page load
+
+## Launch and Results
+
+The platform launched successfully and exceeded all initial targets. The mobile-first approach paid off, with mobile users converting at rates comparable to desktop users. The performance optimizations ensured a smooth experience even during peak traffic periods.
