@@ -8,37 +8,37 @@ interface LayoutProps {
 export default function Layout({ children }: LayoutProps) {
   return (
     <div className="min-h-screen flex flex-col">
-      <header className="border-b border-neutral-200 bg-white">
+      <header className="border-b border-neutral-800 bg-bg-card">
         <nav className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center h-16">
             <Link 
               href="/" 
-              className="text-xl font-semibold text-neutral-900 hover:text-primary-600 transition-colors"
+              className="text-xl font-semibold text-text-heading hover:text-accent transition-colors"
             >
               Portfolio
             </Link>
             <div className="flex space-x-6">
               <Link 
                 href="/" 
-                className="text-neutral-600 hover:text-neutral-900 transition-colors"
+                className="text-text-secondary hover:text-text-heading transition-colors"
               >
                 Home
               </Link>
               <Link 
                 href="/case-studies" 
-                className="text-neutral-600 hover:text-neutral-900 transition-colors"
+                className="text-text-secondary hover:text-text-heading transition-colors"
               >
                 Case Studies
               </Link>
               <Link 
                 href="/work-with-me" 
-                className="text-neutral-600 hover:text-neutral-900 transition-colors"
+                className="text-text-secondary hover:text-text-heading transition-colors"
               >
                 Work With Me
               </Link>
               <Link 
                 href="/contact" 
-                className="text-neutral-600 hover:text-neutral-900 transition-colors"
+                className="text-text-secondary hover:text-text-heading transition-colors"
               >
                 Contact
               </Link>
@@ -51,9 +51,9 @@ export default function Layout({ children }: LayoutProps) {
         {children}
       </main>
 
-      <footer className="border-t border-neutral-200 bg-white mt-auto">
+      <footer className="border-t border-neutral-800 bg-bg-card mt-auto">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-          <div className="text-center text-neutral-600 text-sm">
+          <div className="text-center text-text-muted text-sm">
             <p>&copy; {new Date().getFullYear()} Portfolio. All rights reserved.</p>
           </div>
         </div>

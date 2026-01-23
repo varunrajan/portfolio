@@ -10,6 +10,16 @@ const config: Config = {
     extend: {
       colors: {
         // Design tokens - use these instead of hard-coded colors
+        bg: {
+          page: 'var(--color-bg-page)',
+          card: 'var(--color-bg-card)',
+        },
+        text: {
+          heading: 'var(--color-text-heading)',
+          body: 'var(--color-text-body)',
+          secondary: 'var(--color-text-secondary)',
+          muted: 'var(--color-text-muted)',
+        },
         primary: {
           50: 'var(--color-primary-50)',
           100: 'var(--color-primary-100)',
@@ -37,6 +47,7 @@ const config: Config = {
         accent: {
           DEFAULT: 'var(--color-accent)',
           hover: 'var(--color-accent-hover)',
+          alt: 'var(--color-accent-alt)',
         },
       },
       fontFamily: {

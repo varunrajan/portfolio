@@ -30,12 +30,12 @@ export default function Home() {
 
   return (
     <>
-      <Section className="bg-white">
+      <Section className="bg-bg-page">
         <div className="text-center py-3xl">
-          <h1 className="text-4xl font-bold text-neutral-900 mb-md">
+          <h1 className="text-4xl font-bold text-text-heading mb-md">
             Welcome to My Portfolio
           </h1>
-          <p className="text-xl text-neutral-600 max-w-2xl mx-auto mb-lg">
+          <p className="text-xl text-text-body max-w-2xl mx-auto mb-lg">
             I build products that users love. Here's a snapshot of my work and experience.
           </p>
           <div className="flex gap-md justify-center">
@@ -49,10 +49,10 @@ export default function Home() {
         </div>
       </Section>
 
-      <Section className="bg-neutral-50">
+      <Section className="bg-bg-page">
         <div className="mb-xl">
-          <h2 className="text-3xl font-bold text-neutral-900 mb-md">Timeline</h2>
-          <p className="text-lg text-neutral-600">
+          <h2 className="text-3xl font-bold text-text-heading mb-md">Timeline</h2>
+          <p className="text-lg text-text-body">
             A journey through key projects and milestones.
           </p>
         </div>

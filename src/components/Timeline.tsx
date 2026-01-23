@@ -22,7 +22,7 @@ export default function Timeline({ entries, caseStudies = [] }: TimelineProps) {
   return (
     <div className="relative">
       {/* Timeline line */}
-      <div className="absolute left-8 top-0 bottom-0 w-0.5 bg-neutral-200" />
+      <div className="absolute left-8 top-0 bottom-0 w-0.5 bg-neutral-800" />
       
       <div className="space-y-lg">
         {entries.map((entry, idx) => {
@@ -36,7 +36,7 @@ export default function Timeline({ entries, caseStudies = [] }: TimelineProps) {
               {/* Date column */}
               <div className="flex-shrink-0 w-16 text-right">
                 <div className="sticky top-4">
-                  <div className="text-sm font-medium text-neutral-600">
+                  <div className="text-sm font-medium text-text-muted">
                     {entry.date}
                   </div>
                 </div>
@@ -44,20 +44,20 @@ export default function Timeline({ entries, caseStudies = [] }: TimelineProps) {
 
               {/* Timeline dot */}
               <div className="flex-shrink-0 relative">
-                <div className="absolute left-6 top-1.5 w-4 h-4 bg-primary-600 rounded-full border-4 border-white shadow-md" />
+                <div className="absolute left-6 top-1.5 w-4 h-4 bg-accent rounded-full border-4 border-bg-page shadow-md" />
               </div>
 
               {/* Content */}
               <div className="flex-grow pb-lg">
-                <div className="bg-white rounded-lg border border-neutral-200 p-lg shadow-sm">
+                <div className="bg-bg-card rounded-lg border border-neutral-800 p-lg shadow-sm">
                   {entry.company && (
                     <div className="mb-md">
-                      <h3 className="text-xl font-bold text-neutral-900">
+                      <h3 className="text-xl font-bold text-text-heading">
                         {entry.company}
                       </h3>
                     </div>
                   )}
-                  <div className="text-base text-neutral-900">
+                  <div className="text-base text-text-body">
                     {entry.summary}
                   </div>
                   
@@ -65,7 +65,7 @@ export default function Timeline({ entries, caseStudies = [] }: TimelineProps) {
                     <div className="mt-md">
                       <Link 
                         href={entry.link.href}
-                        className="text-primary-600 hover:text-primary-700 font-medium text-sm inline-flex items-center gap-xs"
+                        className="text-accent hover:text-accent-hover font-medium text-sm inline-flex items-center gap-xs"
                       >
                         {entry.link.label}
                         <span>→</span>

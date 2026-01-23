@@ -20,11 +20,11 @@ export default function CallToActionStrip({
   secondaryAction 
 }: CallToActionStripProps) {
   return (
-    <div className="bg-primary-600 text-white py-3xl">
+    <div className="bg-accent text-bg-page py-3xl">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
         <h2 className="text-3xl font-bold mb-md">{title}</h2>
         {description && (
-          <p className="text-lg text-primary-100 mb-lg max-w-2xl mx-auto">
+          <p className="text-lg text-bg-page/80 mb-lg max-w-2xl mx-auto">
             {description}
           </p>
         )}
@@ -32,7 +32,7 @@ export default function CallToActionStrip({
           <Button 
             href={primaryAction.href} 
             variant="secondary"
-            className="bg-white text-primary-600 hover:bg-primary-50"
+            className="bg-bg-page text-accent hover:bg-neutral-900"
           >
             {primaryAction.label}
           </Button>
@@ -40,7 +40,7 @@ export default function CallToActionStrip({
             <Button 
               href={secondaryAction.href} 
               variant="secondary"
-              className="bg-transparent border-2 border-white text-white hover:bg-white hover:text-primary-600"
+              className="bg-transparent border-2 border-bg-page text-bg-page hover:bg-bg-page hover:text-accent"
             >
               {secondaryAction.label}
             </Button>

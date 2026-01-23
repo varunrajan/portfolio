@@ -13,7 +13,7 @@ export default function Card({ children, className = '', hover = false }: CardPr
   
   return (
     <div 
-      className={`bg-white rounded-lg border border-neutral-200 shadow-md p-lg ${hoverClasses} ${className}`}
+      className={`bg-bg-card rounded-lg border border-neutral-800 shadow-md p-lg ${hoverClasses} ${className}`}
     >
       {children}
     </div>

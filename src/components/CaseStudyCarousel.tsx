@@ -12,9 +12,9 @@ interface CaseStudyCarouselProps {
 function CaseStudyCard({ caseStudy }: { caseStudy: CaseStudy }) {
   return (
     <Link href={`/case-studies/${caseStudy.slug}`}>
-      <div className="flex-shrink-0 w-64 bg-white rounded-lg border border-neutral-200 shadow-md overflow-hidden hover:shadow-lg transition-all duration-200 cursor-pointer flex flex-col">
+      <div className="flex-shrink-0 w-64 bg-bg-card rounded-lg border border-neutral-800 shadow-md overflow-hidden hover:shadow-lg transition-all duration-200 cursor-pointer flex flex-col">
         {caseStudy.thumbnail && (
-          <div className="relative w-full h-40 bg-neutral-100 overflow-hidden">
+          <div className="relative w-full h-40 bg-neutral-800 overflow-hidden">
             <img
               src={caseStudy.thumbnail}
               alt={caseStudy.title}
@@ -23,10 +23,10 @@ function CaseStudyCard({ caseStudy }: { caseStudy: CaseStudy }) {
           </div>
         )}
         <div className={`p-md flex-grow flex flex-col ${caseStudy.thumbnail ? '' : 'min-h-[120px]'}`}>
-          <h3 className="text-base font-bold text-neutral-900 mb-xs line-clamp-2">
+          <h3 className="text-base font-bold text-text-heading mb-xs line-clamp-2">
             {caseStudy.title}
           </h3>
-          <p className="text-sm text-neutral-600 line-clamp-3">
+          <p className="text-sm text-text-body line-clamp-3">
             {caseStudy.tldr}
           </p>
         </div>
@@ -95,11 +95,11 @@ export default function CaseStudyCarousel({ caseStudies, company }: CaseStudyCar
         {canScroll && showLeftArrow && (
           <button
             onClick={() => scroll('left')}
-            className="absolute left-2 top-1/2 -translate-y-1/2 z-10 bg-white border border-neutral-300 rounded-full p-2 shadow-lg hover:bg-neutral-50 transition-colors"
+            className="absolute left-2 top-1/2 -translate-y-1/2 z-10 bg-bg-card border border-neutral-700 rounded-full p-2 shadow-lg hover:bg-neutral-800 transition-colors"
             aria-label="Scroll left"
           >
             <svg
-              className="w-5 h-5 text-neutral-700"
+              className="w-5 h-5 text-text-body"
               fill="none"
               stroke="currentColor"
               viewBox="0 0 24 24"
@@ -132,11 +132,11 @@ export default function CaseStudyCarousel({ caseStudies, company }: CaseStudyCar
         {canScroll && showRightArrow && (
           <button
             onClick={() => scroll('right')}
-            className="absolute right-2 top-1/2 -translate-y-1/2 z-10 bg-white border border-neutral-300 rounded-full p-2 shadow-lg hover:bg-neutral-50 transition-colors"
+            className="absolute right-2 top-1/2 -translate-y-1/2 z-10 bg-bg-card border border-neutral-700 rounded-full p-2 shadow-lg hover:bg-neutral-800 transition-colors"
             aria-label="Scroll right"
           >
             <svg
-              className="w-5 h-5 text-neutral-700"
+              className="w-5 h-5 text-text-body"
               fill="none"
               stroke="currentColor"
               viewBox="0 0 24 24"
@@ -157,7 +157,7 @@ export default function CaseStudyCarousel({ caseStudies, company }: CaseStudyCar
         <div className="mt-md text-center">
           <Link
             href={`/case-studies?company=${encodeURIComponent(company)}`}
-            className="text-primary-600 hover:text-primary-700 font-medium text-sm inline-flex items-center gap-xs"
+            className="text-accent hover:text-accent-hover font-medium text-sm inline-flex items-center gap-xs"
           >
             View All Case Studies →
           </Link>

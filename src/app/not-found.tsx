@@ -4,10 +4,10 @@ import Button from '@/components/Button';
 
 export default function NotFound() {
   return (
-    <Section className="bg-white min-h-[60vh] flex items-center justify-center">
+    <Section className="bg-bg-page min-h-[60vh] flex items-center justify-center">
       <div className="text-center">
-        <h1 className="text-4xl font-bold text-neutral-900 mb-md">404</h1>
-        <p className="text-xl text-neutral-600 mb-lg">Page not found</p>
+        <h1 className="text-4xl font-bold text-text-heading mb-md">404</h1>
+        <p className="text-xl text-text-body mb-lg">Page not found</p>
         <Button href="/" variant="primary">
           Go Home
         </Button>
