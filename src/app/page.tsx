@@ -13,18 +13,26 @@ export default function Home() {
       company: 'Chegg',
       summary:
         'Led growth and monetization initiatives across acquisition, subscriptions, and upgrades—driving ~$8M+ in incremental annualized revenue through funnel modernization, experimentation, and data-informed trust signals.',
+      logos: [
+        { src: '/logos/chegg.svg', alt: 'Chegg', label: 'EdTech' },
+      ],
     },
     {
       date: '2021 - 2022',
       company: 'RubiconMD',
       summary:
         'Drove adoption of the flagship eConsult product to help secure a $60M contingent cash earnout following acquisition by Oak Street Health.',
+      logos: [
+        { src: '/logos/rubiconmd.svg', alt: 'RubiconMD', label: 'B2B SaaS' },
+        { src: '/logos/oakstreethealth.svg', alt: 'Oak Street Health', label: 'Consumer Health' },
+      ],
     },
     {
       date: '2020 - 2021',
       company: 'Chegg (Chegg Skills)',
       summary:
         'Served as Chief of Staff to the COO, leading product strategy & rollout, market research, and analytics initiatives that improved UX programs, tooling adoption, and job placement forecasting.',
+      // no logos
     },
     {
       date: '2019 - 2021',
