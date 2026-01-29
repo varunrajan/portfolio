@@ -27,7 +27,7 @@ export default function Layout({ children }: LayoutProps) {
               href="/" 
               className="text-xl font-semibold text-text-heading hover:text-accent transition-colors"
             >
-              Portfolio
+              Varun Rajan
             </Link>
             
             {/* Desktop Navigation - hidden below 550px */}
