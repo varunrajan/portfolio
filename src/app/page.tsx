@@ -9,22 +9,40 @@ export default function Home() {
   // Create timeline entries from case studies + additional entries
   const timelineEntries = [
     {
-      date: '2024',
-      summary: 'Led product redesign for enterprise SaaS platform, increasing user engagement by 40%.',
-      company: 'TechCorp',
+      date: '2022 - 2024',
+      company: 'Chegg',
+      summary:
+        'Led growth and monetization initiatives across acquisition, subscriptions, and upgrades—driving ~$8M+ in incremental annualized revenue through funnel modernization, experimentation, and data-informed trust signals.',
     },
     {
-      date: '2023',
-      summary: 'Built mobile-first e-commerce experience from scratch, processing $2M+ in first quarter.',
-      company: 'RetailStart',
+      date: '2021 - 2022',
+      company: 'RubiconMD',
+      summary:
+        'Drove adoption of the flagship eConsult product to help secure a $60M contingent cash earnout following acquisition by Oak Street Health.',
     },
     {
-      date: '2022',
-      summary: 'Established design system and component library used across 5 product teams.',
+      date: '2020 - 2021',
+      company: 'Chegg (Chegg Skills)',
+      summary:
+        'Served as Chief of Staff to the COO, leading product strategy & rollout, market research, and analytics initiatives that improved UX programs, tooling adoption, and job placement forecasting.',
     },
     {
-      date: '2021',
-      summary: 'Joined startup as founding engineer, shipped MVP in 3 months.',
+      date: '2019 - 2021',
+      company: 'Keming / Free Agency / Stealth Talent Startup',
+      summary:
+        'Co-founded and consulted across multiple tech talent initiatives—launching a podcast, newsletter, and community, coaching candidates, and building early-stage recruiting operations and best practices.',
+    },
+    {
+      date: '2018 - 2019',
+      company: 'Teachable',
+      summary:
+        'Owned internal tools and support systems, reducing inbound ticket volume by 15%, modernizing bug triage workflows, and introducing structured discovery practices across product and engineering.',
+    },
+    {
+      date: '2015 - 2018',
+      company: 'Thinkful',
+      summary:
+        'Led product initiatives in education and operations—reducing student remediation by 60%, enabling nontechnical program management, and supporting Thinkful’s rise to the #1 coding bootcamp on Course Report.',
     },
   ];
 

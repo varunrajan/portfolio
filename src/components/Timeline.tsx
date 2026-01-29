@@ -34,7 +34,7 @@ export default function Timeline({ entries, caseStudies = [] }: TimelineProps) {
           return (
             <div key={idx} className="relative flex gap-lg">
               {/* Date column */}
-              <div className="flex-shrink-0 w-16 text-right">
+              <div className="flex-shrink-0 w-16 text-left">
                 <div className="sticky top-4">
                   <div className="text-sm font-medium text-text-muted">
                     {entry.date}
