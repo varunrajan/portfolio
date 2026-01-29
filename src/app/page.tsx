@@ -14,7 +14,7 @@ export default function Home() {
       summary:
         'Led growth and monetization initiatives across acquisition, subscriptions, and upgrades—driving ~$8M+ in incremental annualized revenue through funnel modernization, experimentation, and data-informed trust signals.',
       logos: [
-        { src: 'https://logo.clearbit.com/chegg.com', alt: 'Chegg', label: 'EdTech' },
+        { src: '/logos/chegg.svg', alt: 'Chegg', label: 'EdTech' },
       ],
     },
     {
@@ -23,8 +23,8 @@ export default function Home() {
       summary:
         'Drove adoption of the flagship eConsult product to help secure a $60M contingent cash earnout following acquisition by Oak Street Health.',
       logos: [
-        { src: 'https://logo.clearbit.com/rubiconmd.com', alt: 'RubiconMD', label: 'B2B SaaS' },
-        { src: 'https://logo.clearbit.com/oakstreethealth.com', alt: 'Oak Street Health', label: 'Consumer Health' },
+        { src: '/logos/rubiconmd.svg', alt: 'RubiconMD', label: 'B2B SaaS' },
+        { src: '/logos/oakstreethealth.svg', alt: 'Oak Street Health', label: 'Consumer Health' },
       ],
     },
     {
