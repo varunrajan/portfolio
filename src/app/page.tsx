@@ -14,7 +14,7 @@ export default function Home() {
       summary:
         'Led growth and monetization initiatives across acquisition, subscriptions, and upgrades—driving ~$8M+ in incremental annualized revenue through funnel modernization, experimentation, and data-informed trust signals.',
       logos: [
-        { src: '/logos/chegg.svg', alt: 'Chegg', label: 'EdTech' },
+        { src: '/logos/chegg.png', alt: 'Chegg' },
       ],
     },
     {
