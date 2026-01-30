@@ -23,8 +23,8 @@ export default function Home() {
       summary:
         'Drove adoption of the flagship eConsult product to help secure a $60M contingent cash earnout following acquisition by Oak Street Health.',
       logos: [
-        { src: '/logos/rubiconmd.svg', alt: 'RubiconMD', label: 'B2B SaaS' },
-        { src: '/logos/oakstreethealth.svg', alt: 'Oak Street Health', label: 'Consumer Health' },
+        { src: '/logos/rubiconmd.png', alt: 'RubiconMD', label: 'RubiconMD' },
+        { src: '/logos/oakstreethealth.jpeg', alt: 'Oak Street Health', label: 'Oak Street Health' },
       ],
     },
     {
