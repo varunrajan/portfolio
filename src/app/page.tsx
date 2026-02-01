@@ -125,7 +125,7 @@ export default function Home() {
         <div className="mb-xl">
           <h2 className="text-3xl font-bold text-text-heading mb-md">What I've Built</h2>
           <p className="text-lg text-text-body">
-            THe roles and environments where I helped teams grow, ship, and level up.
+            Explore the roles and environments where I helped teams grow, ship, and level up.
           </p>
         </div>
         <Timeline entries={timelineEntries} caseStudies={caseStudies} />
