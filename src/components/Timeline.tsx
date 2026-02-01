@@ -101,7 +101,7 @@ export default function Timeline({ entries, caseStudies = [] }: TimelineProps) {
                       </div>
                     ) : null}
                   </div>
-                  <div className="text-base text-text-body">
+                  <div className="text-base text-text-body [&_a]:text-sky-300 [&_a]:hover:text-sky-200 [&_a]:underline [&_a]:underline-offset-2 [&_a]:transition-colors">
                     {entry.summary}
                   </div>
                   {entry.link && (
