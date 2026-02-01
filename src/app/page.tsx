@@ -103,14 +103,14 @@ export default function Home() {
             {/* Right column: hero content */}
             <div className="order-2 md:order-none text-left">
               <h1 className="text-4xl font-bold text-text-heading mb-md">
-                Welcome to My Portfolio
+                Turn Your Organization Into a High-Trust, High-Output Machine
               </h1>
               <p className="text-xl text-text-body max-w-2xl mb-lg">
-                I build products that users love. Here's a snapshot of my work and experience.
+                I work across product, people, and leadership to empower teams to trust their judgment, align across functions, and execute with conviction.
               </p>
               <div className="flex flex-wrap gap-md">
                 <Button href="/case-studies" variant="primary">
-                  View Case Studies
+                  My Work
                 </Button>
                 <Button href="/work-with-me" variant="secondary">
                   Work With Me
@@ -123,9 +123,9 @@ export default function Home() {
 
       <Section className="bg-bg-page">
         <div className="mb-xl">
-          <h2 className="text-3xl font-bold text-text-heading mb-md">Timeline</h2>
+          <h2 className="text-3xl font-bold text-text-heading mb-md">What I've Built</h2>
           <p className="text-lg text-text-body">
-            A journey through key projects and milestones.
+            THe roles and environments where I helped teams grow, ship, and level up.
           </p>
         </div>
         <Timeline entries={timelineEntries} caseStudies={caseStudies} />
