@@ -84,29 +84,48 @@ export default function Home() {
   return (
     <>
       <Section className="bg-bg-page">
-        <div className="text-center py-3xl">
-          <h1 className="text-4xl font-bold text-text-heading mb-md">
-            Welcome to My Portfolio
-          </h1>
-          <p className="text-xl text-text-body max-w-2xl mx-auto mb-lg">
-            I build products that users love. Here's a snapshot of my work and experience.
-          </p>
-          <div className="flex gap-md justify-center">
-            <Button href="/case-studies" variant="primary">
-              View Case Studies
-            </Button>
-            <Button href="/work-with-me" variant="secondary">
-              Work With Me
-            </Button>
+        <header className="py-3xl">
+          <div className="grid grid-cols-1 md:grid-cols-[minmax(0,0.45fr)_minmax(0,0.55fr)] gap-xl md:gap-2xl items-center">
+            {/* Left column: photo */}
+            <figure className="flex justify-center md:justify-start order-1 md:order-none w-full max-w-[85%] md:max-w-none mx-auto md:mx-0">
+              <div className="relative w-full max-w-sm md:max-w-full flex items-center justify-center">
+                <img
+                  src="/photos/varun-hero.jpeg"
+                  alt="Varun Rajan"
+                  className="w-full h-auto object-contain rounded-xl hero-image-fade object-center"
+                  width={380}
+                  height={507}
+                  sizes="(max-width: 767px) 85vw, 42vw"
+                />
+              </div>
+            </figure>
+
+            {/* Right column: hero content */}
+            <div className="order-2 md:order-none text-left">
+              <h1 className="text-4xl font-bold text-text-heading mb-md">
+                Turn Your Organization Into a High-Trust, High-Output Machine
+              </h1>
+              <p className="text-xl text-text-body max-w-2xl mb-lg">
+                I work across product, people, and leadership to empower teams to trust their judgment, align across functions, and execute with conviction.
+              </p>
+              <div className="flex flex-wrap gap-md">
+                <Button href="/case-studies" variant="primary">
+                  My Work
+                </Button>
+                <Button href="/work-with-me" variant="secondary">
+                  Work With Me
+                </Button>
+              </div>
+            </div>
           </div>
-        </div>
+        </header>
       </Section>
 
       <Section className="bg-bg-page">
         <div className="mb-xl">
-          <h2 className="text-3xl font-bold text-text-heading mb-md">Timeline</h2>
+          <h2 className="text-3xl font-bold text-text-heading mb-md">What I've Built</h2>
           <p className="text-lg text-text-body">
-            A journey through key projects and milestones.
+            Explore the roles and environments where I helped teams grow, ship, and level up.
           </p>
         </div>
         <Timeline entries={timelineEntries} caseStudies={caseStudies} />
