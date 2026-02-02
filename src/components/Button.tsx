@@ -8,6 +8,8 @@ interface ButtonProps {
   onClick?: () => void;
   type?: 'button' | 'submit' | 'reset';
   className?: string;
+  target?: string;
+  rel?: string;
 }
 
 export default function Button({ 
@@ -17,6 +19,8 @@ export default function Button({
   onClick,
   type = 'button',
   className = '',
+  target,
+  rel,
 }: ButtonProps) {
   const baseClasses = 'inline-flex items-center justify-center px-lg py-md rounded-md font-medium transition-colors focus:outline-none focus:ring-2 focus:ring-offset-2';
   
@@ -29,7 +33,7 @@ export default function Button({
 
   if (href) {
     return (
-      <Link href={href} className={classes}>
+      <Link href={href} className={classes} target={target} rel={rel}>
         {children}
       </Link>
     );
