@@ -13,8 +13,9 @@ export async function generateStaticParams() {
 }
 
 // Generate metadata for each case study
-export async function generateMetadata({ params }: { params: { slug: string } }) {
-  const caseStudy = getCaseStudyBySlug(params.slug);
+export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }) {
+  const { slug } = await params;
+  const caseStudy = getCaseStudyBySlug(slug);
 
   if (!caseStudy) {
     return {
@@ -36,8 +37,9 @@ async function markdownToHtml(markdown: string) {
   return result.toString();
 }
 
-export default async function CaseStudyPage({ params }: { params: { slug: string } }) {
-  const caseStudy = getCaseStudyBySlug(params.slug);
+export default async function CaseStudyPage({ params }: { params: Promise<{ slug: string }> }) {
+  const { slug } = await params;
+  const caseStudy = getCaseStudyBySlug(slug);
 
   if (!caseStudy) {
     notFound();
