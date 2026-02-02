@@ -15,14 +15,10 @@ tags:
 
 ## 1. The Goal: Smooth Scaling on Bug Triage
 
-As Teachable's first dedicated Product hire, I had the unique opportunity to shape the Product team and tech operations.
-We consistently shipped quickly, but we lacked a reliable way to understand the health of our bug reporting and resolution process.
+Teachable Product & Engineering consistently shipped quickly, but we lacked a reliable way to understand the health of our bug reporting and resolution process.
 What I learned informally from peers in Engineering, Customer Care, and Product was basic, but instructive:
-- "I can't get anyone to fix the bugs I care about"
-- "I wish they would spend more time with customer inquiries before bringing problems to us that aren't actually bugs"
-- "I didn't even know we were asked to fix that bug"
 
-Turns out, we couldn't answer basic questions:
+Turns out we couldn't answer basic questions:
 - How many bugs did we have?
 - How many of them are valid?
 - How long do they take to resolve?
@@ -30,45 +26,61 @@ Turns out, we couldn't answer basic questions:
 
 Bug reports flowed into Customer Care (CC), then to Product Solutions (PS - a technical support team that vetted bugs), and then out to multiple engineering pods. However: ownership, prioritization, and timelines all lacked consistency. The result was friction between teams, unclear accountability, and complete lack of confidence in the current system.
 
-**My Goal:** Treat Bug Triage
+**My Goal:** Treat Bug Triage as a product and make it measurable.
 
-I launched an initiatve to close the loop on information gaps, and lobbied the VP of Product, CTO, and VP of Engineering to back me up as I rolled out new tooling, behaviors, and overall approach to keeping our bugs squashed, product healthy, and customers ... well, /not/ noticing anything was wrong.
+I launched an initiatve to close the loop on information gaps, and lobbied the VP of Product, CTO, and VP of Engineering to back me up as I rolled out new tooling, behaviors, and overall approach to keeping our bugs squashed, product healthy, and customers ... well, *not* noticing anything was wrong.
 
-## Research Phase
+## 2. Diagnose Before Design
 
-We started by conducting extensive user research with over 20 enterprise customers. Key findings included:
+**My primary stakeholders:**
 
-- Navigation was confusing, with users unable to find key features
-- Inconsistent UI patterns made the platform feel unprofessional
-- Onboarding took too long, with many users giving up
-- Support tickets were primarily UX-related rather than technical issues
+- Customer Care (intake)
+- Product Solutions (technical triage)
+- Pod Leads and Engineers (execution)
+- Data Team (analytics foundations)
 
-## Design System Creation
+**What I did:**
 
-One of the first steps was creating a unified design system. This included:
+1. Mapped the end-to-end-workflow
+    1. Customer-reported issues -> escalation -> validation -> resolution
+    2. identified blockers across handoffs, duplication, ownership confusion
 
-- Color palette and typography scale
-- Component library with 50+ reusable components
-- Spacing and layout guidelines
-- Interaction patterns and animations
-- Accessibility standards (WCAG 2.1 AA)
+![Bug workflow](/diagrams/teachable-bug-lifecycle.png)
 
-The design system was documented in both Figma and Storybook, making it easy for all teams to adopt.
+2. Conducted stakeholder interviews
+    1. Focused on where context was lost
+    1. Where follow-ups became manual
+    1. Where trust broke down. From the archives:
+        - *"How can I even find out the status of that bug I reported?"*
+        - *"I didn't even know we were asked to fix that bug"*
+        - *"I wish they would spend more time with customer inquiries before bringing problems to us that aren't actually bugs"*
+3. Audited existing data
 
-## Implementation
+    etc. etc.
 
-The redesign was implemented in phases:
+    1. Labeled states, priorities, timelines
+    1. Identified drift, inconsistency, and missing information and history
 
-1. **Phase 1**: Core navigation and layout structure
-2. **Phase 2**: Primary user workflows (dashboard, data management)
-3. **Phase 3**: Secondary features and edge cases
-4. **Phase 4**: Mobile responsive design
+4. Partnered with Data
+    1. Defined what data needed to exist before:
+        1. Any dashboards or tooling could make a meaningful difference
+        1. **Crucially:** We could actually quantifiably assess our gaps as an organization
+    1. Prototyped analysis manually to validate questions
 
-Each phase included user testing and iteration before moving to the next.
+## 3. Uncover Silent Systemic Failures
 
-## Results
+**Key Findings**
 
-The redesign was a significant success, with measurable improvements across all key metrics. The design system has since been adopted by three additional product teams, creating consistency across the entire platform.
+- Measurement was impossible 
+Labels changed over time, timelines weren't defined consistently, hsitorical data couldn't be trusted
+
+- Ownership was diffused
+
+Engineers weren't sure which tickets to follow. Product Solutions actued as manual workflow guidelines
+
+- Tooling amplified social friction
+
+Duplicate stories, unclear sources of truth, and constant follow-ups eroded confidence
 
 ## Metrics Overview
 
