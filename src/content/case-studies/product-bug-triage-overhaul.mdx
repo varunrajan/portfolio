@@ -4,36 +4,35 @@ role: Product Manager, Internal Tools & Product Operations
 company: Teachable
 dates: 2018 - 2019
 tldr: Overhauled prioritization framework, established SLAs, and built dashboards for product, tech leads, and tech support to proactively manage issues and set resolution targets.
-challenge: |
-  As Teachable's first Product hire, I had the privilege of shaping the product team and operations over several months.
-actions:
-  - Conducted user research with 20+ enterprise customers to identify pain points
-  - Created unified design system with component library and documentation
-  - Redesigned primary navigation and information architecture
-  - Implemented progressive disclosure patterns for complex workflows
-  - Built interactive prototypes for stakeholder validation
-  - Collaborated with engineering on implementation plan
-outcomes:
-  - 40% increase in daily active users within 3 months
-  - 25% reduction in support tickets related to UX issues
-  - 50% faster onboarding time for new enterprise customers
-  - Design system adopted by 3 additional product teams
-  - Positive feedback from 90% of beta testers
-artifacts:
-  - Design system documentation
-  - Component library (Figma + Storybook)
-  - User research report
-  - Interactive prototypes
 tags:
-  - Design Systems
-  - UX Research
-  - Enterprise SaaS
-  - Product Design
+  - Data Visibility
+  - Product Operations
+  - SQL
+  - Looker
+  - Stakeholder management
+  - Internal Tools
 ---
 
-## Overview
+## 1. The Goal: Smooth Scaling on Bug Triage
 
-This project involved a comprehensive redesign of an enterprise SaaS platform that had grown organically over several years. The goal was to create a more intuitive, consistent, and scalable user experience.
+As Teachable's first dedicated Product hire, I had the unique opportunity to shape the Product team and tech operations.
+We consistently shipped quickly, but we lacked a reliable way to understand the health of our bug reporting and resolution process.
+What I learned informally from peers in Engineering, Customer Care, and Product was basic, but instructive:
+- "I can't get anyone to fix the bugs I care about"
+- "I wish they would spend more time with customer inquiries before bringing problems to us that aren't actually bugs"
+- "I didn't even know we were asked to fix that bug"
+
+Turns out, we couldn't answer basic questions:
+- How many bugs did we have?
+- How many of them are valid?
+- How long do they take to resolve?
+- Where were things getting stuck?
+
+Bug reports flowed into Customer Care (CC), then to Product Solutions (PS - a technical support team that vetted bugs), and then out to multiple engineering pods. However: ownership, prioritization, and timelines all lacked consistency. The result was friction between teams, unclear accountability, and complete lack of confidence in the current system.
+
+**My Goal:** Treat Bug Triage
+
+I launched an initiatve to close the loop on information gaps, and lobbied the VP of Product, CTO, and VP of Engineering to back me up as I rolled out new tooling, behaviors, and overall approach to keeping our bugs squashed, product healthy, and customers ... well, /not/ noticing anything was wrong.
 
 ## Research Phase
 
@@ -70,3 +69,12 @@ Each phase included user testing and iteration before moving to the next.
 ## Results
 
 The redesign was a significant success, with measurable improvements across all key metrics. The design system has since been adopted by three additional product teams, creating consistency across the entire platform.
+
+## Metrics Overview
+
+| Metric | Before | After | Change |
+| ------ | ------ | ----- | ------ |
+| Page load time | 4.2s | 1.1s | −74% |
+| Daily active users | 1,200 | 1,680 | +40% |
+| Support tickets | 320/mo | 240/mo | −25% |
+| Conversion rate | 2.1% | 3.4% | +62% |

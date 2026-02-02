@@ -9,10 +9,6 @@ export interface CaseStudy {
   company: string;
   dates: string;
   tldr: string;
-  challenge: string;
-  actions: string[];
-  outcomes: string[];
-  artifacts?: string[];
   tags: string[];
   thumbnail?: string;
   content: string;
@@ -48,10 +44,6 @@ export function getCaseStudyBySlug(slug: string): CaseStudy | null {
     company: data.company || '',
     dates: data.dates || '',
     tldr: data.tldr || '',
-    challenge: data.challenge || '',
-    actions: data.actions || [],
-    outcomes: data.outcomes || [],
-    artifacts: data.artifacts || [],
     tags: data.tags || [],
     thumbnail: data.thumbnail || undefined,
     content,

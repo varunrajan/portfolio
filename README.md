@@ -63,29 +63,12 @@ role: Your Role
 company: Company Name
 dates: MM/YYYY - MM/YYYY
 tldr: Brief summary (one sentence)
-challenge: |
-  Multi-line description of the challenge
-actions:
-  - Action item 1
-  - Action item 2
-outcomes:
-  - Outcome 1
-  - Outcome 2
-artifacts:
-  - Artifact 1
-  - Artifact 2
 tags:
   - Tag 1
   - Tag 2
-push:
-  - Push item 1
-  - Push item 2
-pull:
-  - Pull item 1
-  - Pull item 2
 ---
 
-Your markdown content here...
+Your markdown content here (headings, paragraphs, lists, code blocks, images, etc.)...
 ```
 
 3. The file name (without `.mdx`) becomes the URL slug (e.g., `my-case-study.mdx` → `/case-studies/my-case-study`)

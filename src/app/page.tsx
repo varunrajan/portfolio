@@ -65,7 +65,7 @@ export default function Home() {
       date: '2018 - 2019',
       company: 'Teachable',
       summary:
-        'Owned internal tools and support systems, reducing inbound ticket volume by 15%, modernizing bug triage workflows, and introducing structured discovery practices across product and engineering.',
+        'As first dedicated Product hire, I had the unique opportunity to shape the Product team and tech operations. Owned internal tools and support systems, reducing inbound ticket volume by 15%, modernizing bug triage workflows, and introducing structured discovery practices across product and engineering.',
         logos: [
           { src: '/logos/teachable.jpeg', alt: 'Teachable'},
         ],  
@@ -110,11 +110,11 @@ export default function Home() {
               </p>
               <div className="flex flex-wrap gap-md">
                 <Button href="/case-studies" variant="primary">
-                  My Work
+                  See My Work
                 </Button>
-                <Button href="/work-with-me" variant="secondary">
+{/*                <Button href="/work-with-me" variant="secondary">
                   Work With Me
-                </Button>
+                </Button>*/}
               </div>
             </div>
           </div>
