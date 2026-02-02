@@ -9,20 +9,17 @@ tags:
   - Product Operations
   - SQL
   - Looker
+  - LookML
   - Stakeholder management
   - Internal Tools
 ---
 
-## 1. The Goal: Smooth Scaling on Bug Triage
+## The Goal: Add Clarity and Accountability to Bug Triage
 
-As Teachable's first dedicated Product hire, I had the unique opportunity to shape the Product team and tech operations.
-We consistently shipped quickly, but we lacked a reliable way to understand the health of our bug reporting and resolution process.
+Teachable Product & Engineering consistently shipped quickly, but we lacked a reliable way to understand the health of our bug reporting and resolution process.
 What I learned informally from peers in Engineering, Customer Care, and Product was basic, but instructive:
-- "I can't get anyone to fix the bugs I care about"
-- "I wish they would spend more time with customer inquiries before bringing problems to us that aren't actually bugs"
-- "I didn't even know we were asked to fix that bug"
 
-Turns out, we couldn't answer basic questions:
+Turns out we couldn't answer basic questions:
 - How many bugs did we have?
 - How many of them are valid?
 - How long do they take to resolve?
@@ -30,51 +27,131 @@ Turns out, we couldn't answer basic questions:
 
 Bug reports flowed into Customer Care (CC), then to Product Solutions (PS - a technical support team that vetted bugs), and then out to multiple engineering pods. However: ownership, prioritization, and timelines all lacked consistency. The result was friction between teams, unclear accountability, and complete lack of confidence in the current system.
 
-**My Goal:** Treat Bug Triage
+**My Goal:** Treat Bug Triage as a product and make it measurable.
 
-I launched an initiatve to close the loop on information gaps, and lobbied the VP of Product, CTO, and VP of Engineering to back me up as I rolled out new tooling, behaviors, and overall approach to keeping our bugs squashed, product healthy, and customers ... well, /not/ noticing anything was wrong.
+I launched an initiatve to close the loop on information gaps, and lobbied the VPs of Product, Engineering, and Data to back me up as I rolled out new tooling, behaviors, and overall approach to keeping our bugs squashed, product healthy, and customers feeling cared for.
 
-## Research Phase
+## The Output: Solutions We Implemented (High-Level, Not Exhaustive)
 
-We started by conducting extensive user research with over 20 enterprise customers. Key findings included:
+Before I regale you with my approach, let me hit you with why it mattered in the end:
 
-- Navigation was confusing, with users unable to find key features
-- Inconsistent UI patterns made the platform feel unprofessional
-- Onboarding took too long, with many users giving up
-- Support tickets were primarily UX-related rather than technical issues
+**What Changed**
 
-## Design System Creation
+  - **Standardized prioritization**
+    - Consolidated Impact × Severity into `p1`–`p4`
+  -	**Introduced SLA-based visibility**
+    - Derived expected resolution timelines by priority
+    - Tracked `days_outstanding` and over/under SLA
+  - **Clarified ownership**
+    - Product Solutions trusted to escalate to engineering
+    - Pod leads assign engineers
+    - Single source of truth for dev workflow
+  - **Built analytics foundations**
+    - Requested event-level data from Clubhouse (project management software)
+    - Designed Redshift-friendly schemas
+	  - Built Looker views for pods, Product Solutions, and leadership
 
-One of the first steps was creating a unified design system. This included:
+**What Improved**
 
-- Color palette and typography scale
-- Component library with 50+ reusable components
-- Spacing and layout guidelines
-- Interaction patterns and animations
-- Accessibility standards (WCAG 2.1 AA)
+  - Clearer prioritization across teams
+  - Reduced manual follow-ups
+  - Shared language around bug health
+  - Increased confidence in decision-making
 
-The design system was documented in both Figma and Storybook, making it easy for all teams to adopt.
+Here's how we came to these outcomes.
 
-## Implementation
+## Step 1: Diagnose Before Designing
 
-The redesign was implemented in phases:
+**My primary stakeholders:**
 
-1. **Phase 1**: Core navigation and layout structure
-2. **Phase 2**: Primary user workflows (dashboard, data management)
-3. **Phase 3**: Secondary features and edge cases
-4. **Phase 4**: Mobile responsive design
+- Customer Care (intake)
+- Product Solutions (technical triage)
+- Pod Leads and Engineers (execution)
+- Data Team (analytics foundations)
 
-Each phase included user testing and iteration before moving to the next.
+**What I did:**
 
-## Results
+1. Mapped the end-to-end-workflow
+    1. Customer-reported issues -> escalation -> validation -> resolution
+    2. identified blockers across handoffs, duplication, ownership confusion
 
-The redesign was a significant success, with measurable improvements across all key metrics. The design system has since been adopted by three additional product teams, creating consistency across the entire platform.
+![Bug workflow](/diagrams/teachable-bug-lifecycle.png)
 
-## Metrics Overview
+2. Conducted stakeholder interviews
+    1. Focused on where context was lost
+    1. Where follow-ups became manual
+    1. Where trust broke down. From the archives:
+        - *"How can I even find out the status of that bug I reported?"*
+        - *"I can't tell which of these is actually important at any given moment. I'm waiting for someone to ring alarms"*
+        - *"I wish they would spend more time with customer inquiries before bringing problems to us that aren't actually bugs"*
+3. Audited existing data
 
-| Metric | Before | After | Change |
-| ------ | ------ | ----- | ------ |
-| Page load time | 4.2s | 1.1s | −74% |
-| Daily active users | 1,200 | 1,680 | +40% |
-| Support tickets | 320/mo | 240/mo | −25% |
-| Conversion rate | 2.1% | 3.4% | +62% |
+    We used a project management tool called *Clubhouse* -- think of it as somewhere in between Jira and Trello. I had to export CSVs at first to discover what data we could actually rely on. (Spoiler alert: not much) 
+    I would eventually advocate to ingest webhooks and leverage their API to understand our efficacy and build new tooling.
+
+    1. Labeled states, priorities, timelines
+    1. Identified drift, inconsistency, and missing information and history
+
+4. Partnered with Data
+    1. Defined what data needed to exist before:
+        1. Any dashboards or tooling could make a meaningful difference
+        1. **Crucially:** We could actually quantifiably assess our gaps as an organization
+    1. Prototyped analysis manually to validate questions
+
+## Step 2: Uncover Silent Systemic Failures
+
+**Key Findings**
+
+- **Measurement in the current state was cumbersome**
+
+  Among other issues, priority labels for reported bugs were clever but vastly overcomplicated. Product Solutions had two dimensions by which they determined priority: *Impact* (scope, aka how many people it impacts) and *Severity* (aka, how painful is this).
+
+- **Ownership was diffused**
+
+  Engineers weren't sure which tickets to follow. Product Solutions actued as manual workflow glue.
+
+- **Tooling amplified social friction**
+
+  Duplicate stories, unclear sources of truth, and constant follow-ups between Tech leads, IC engineers, Product Solutions, and Customer Educators eroded confidence in the process.
+
+- **Constant process changes to paper over systemic shortcomings**
+
+  Because of the confluence of factors that made our bug backlog an opaque mess, Product Solutions would hold weekly meeting with Product and Tech leads to lobby for what they deemed to be the "Top 5" most pressing bugs.
+
+  Some where new high-priority issues, others were ones that customer service folks waited on for a long time and wanted resolved.
+
+  This meeting was art *and* science *and* politics. But it sure wasn't effective or optimal 😬
+
+
+## Step 3: Defining Principles and Tradeoffs
+
+**Principle 1: Analytical integrity > False precision**
+- I avoided granular metrics until we aligned on stable definitions
+- Prioritized directional insight first, optimization later
+
+**Principle 2: Actionable scope over total coverage**
+- We chose subsets of data to ignore completely to parse signal from noise
+- Metrics only applied to clearly scoped work teams could actually act on
+  - e.g. bugs categorized as "Unscheduled" or in "Backlog" would pollute analysis
+
+**Principle 3: Visibility over enforcement**
+
+We knew we would define SLAs (service-level agreements, or in short: expected time-to-resolve based on priority) as a part of this process.
+While we wanted to measure this, we made clear that these were guidelines.
+
+- SLAs were designed as trust-building signals, not performance weapons
+- Ownership stayed decentralized by allowing pod leads (PM + TL) to intake bugs, assign them to devs, and work them into sprint planning.
+
+**Principle 4: System Clarity > New tooling > new process**
+
+- Simplified priority taxonomy
+- Reduced dimensionality to improve adoption
+- Reduced meetings, eliminated interim owners from process, consolidated Slack channels for communications
+
+**Principle 5: Data Visualization was our Primary Tool**
+
+- In 2-3 stages, I defined schema needs, event histories, and derived metrics up front
+  - Worked closely with data engineering and analysts to understand what was possible
+- Prototyped analysis before we built pipelines
+  - It started with exports and spreadsheets, but continued as we defined prioriteis in tandem.
+  - In between data building pipelines into our Looker model, I wrote gnarly SQL queries and learned LookML to mock up what dashboards would be helpful to all teams: from the tech support that reported to the pods that resolved.
