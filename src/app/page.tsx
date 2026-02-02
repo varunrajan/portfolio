@@ -115,6 +115,9 @@ export default function Home() {
 {/*                <Button href="/work-with-me" variant="secondary">
                   Work With Me
                 </Button>*/}
+                <Button href="https://conviction.varunrajan.com/" variant="secondary" target="_blank" rel="noopener noreferrer">
+                  Explore Conviction Team Coaching
+                </Button>
               </div>
             </div>
           </div>

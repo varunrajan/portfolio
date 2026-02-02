@@ -49,9 +49,24 @@ export default function Layout({ children }: LayoutProps) {
                 className="text-text-secondary hover:text-text-heading transition-colors"
               >
                 Work With Me
-              </Link>*/}
+              </Link>
               <Link 
                 href="/contact" 
+                className="text-text-secondary hover:text-text-heading transition-colors"
+              >
+                Contact
+              </Link>
+              */}
+              <Link 
+                href="https://conviction.varunrajan.com/" 
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-text-secondary hover:text-text-heading transition-colors"
+              >
+                Team Coaching
+              </Link>
+              <Link 
+                href="mailto:varun@varunrajan.com" 
                 className="text-text-secondary hover:text-text-heading transition-colors"
               >
                 Contact
