@@ -20,10 +20,11 @@ export default function CaseStudiesIndex({ searchParams }: CaseStudiesIndexProps
       <Section className="bg-bg-page">
         <div className="text-center py-xl">
           <h1 className="text-4xl font-bold text-text-heading mb-md">
-            Case Studies
+            My Work
           </h1>
           <p className="text-xl text-text-body max-w-2xl mx-auto mb-md">
-            Deep dives into projects, challenges, and outcomes.
+            Understand my approach to establishing metrics, <br/> defining tradeoffs, and rallying teams to action.<br/>
+            Expect more case studies to come soon. <br/>Having a blast digging into my notes and stories from the trenches.
           </p>
           {companyFilter && (
             <div className="flex items-center justify-center gap-md">
