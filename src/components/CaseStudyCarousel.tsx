@@ -12,7 +12,7 @@ interface CaseStudyCarouselProps {
 function CaseStudyCard({ caseStudy }: { caseStudy: CaseStudy }) {
   return (
     <Link href={`/case-studies/${caseStudy.slug}`}>
-      <div className="flex-shrink-0 w-64 bg-bg-card rounded-lg border border-neutral-800 shadow-md overflow-hidden hover:shadow-lg transition-all duration-200 cursor-pointer flex flex-col">
+      <div className="flex-shrink-0 w-64 bg-[#1F2937] rounded-lg border border-[#334155] shadow-md overflow-hidden hover:border-[#7DD3FC] hover:shadow-lg transition-all duration-200 cursor-pointer flex flex-col">
         {caseStudy.thumbnail && (
           <div className="relative w-full h-40 bg-neutral-800 overflow-hidden">
             <img
@@ -23,10 +23,10 @@ function CaseStudyCard({ caseStudy }: { caseStudy: CaseStudy }) {
           </div>
         )}
         <div className={`p-md flex-grow flex flex-col ${caseStudy.thumbnail ? '' : 'min-h-[120px]'}`}>
-          <h3 className="text-base font-bold text-text-heading mb-xs line-clamp-2">
+          <h3 className="text-base font-bold text-[#F8FAFC] mb-xs line-clamp-2">
             {caseStudy.title}
           </h3>
-          <p className="text-sm text-text-body line-clamp-3">
+          <p className="text-sm text-[#CBD5E1] line-clamp-3">
             {caseStudy.tldr}
           </p>
         </div>
@@ -157,7 +157,7 @@ export default function CaseStudyCarousel({ caseStudies, company }: CaseStudyCar
         <div className="mt-md text-center">
           <Link
             href={`/case-studies?company=${encodeURIComponent(company)}`}
-            className="text-accent hover:text-accent-hover font-medium text-sm inline-flex items-center gap-xs"
+            className="text-[#FFEB3B] hover:text-[#FDE047] font-medium text-sm inline-flex items-center gap-xs"
           >
             View All Case Studies →
           </Link>
