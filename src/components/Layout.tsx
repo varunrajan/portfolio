@@ -42,7 +42,7 @@ export default function Layout({ children }: LayoutProps) {
                 href="/case-studies" 
                 className="text-text-secondary hover:text-text-heading transition-colors"
               >
-                Case Studies
+                My Work
               </Link>
   {/*<Link 
                 href="/work-with-me" 
