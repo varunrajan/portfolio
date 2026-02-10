@@ -75,7 +75,7 @@ Here's how we came to these outcomes.
     1. Customer-reported issues -> escalation -> validation -> resolution
     2. identified blockers across handoffs, duplication, ownership confusion
 
-![Bug workflow](/diagrams/teachable-bug-lifecycle.png)
+![An Audit of Teachable's bug reporting lifecycle](/diagrams/teachable-bug-lifecycle.png)
 
 2. Conducted stakeholder interviews
     1. Focused on where context was lost
@@ -134,19 +134,26 @@ Here's how we came to these outcomes.
 - Metrics only applied to clearly scoped work teams could actually act on
   - e.g. bugs categorized as "Unscheduled" or in "Backlog" would pollute analysis
 
-**Principle 3: Visibility over enforcement**
+**Principle 3: System Clarity > New tooling > new process**
 
-We knew we would define SLAs (service-level agreements, or in short: expected time-to-resolve based on priority) as a part of this process.
+- Simplified priority taxonomy
+- Reduced dimensionality to improve adoption
+- Reduced meetings, eliminated interim owners from process, consolidated Slack channels for communications
+
+!["This table demonstrates 1) how the prior system produced 9 separate categories of prioritization and 2) how we collapsed them into 4."](/diagrams/teachable-bug-priority-overhaul.png)
+
+**Principle 4: Visibility over enforcement**
+
+We defined SLAs (service-level agreements, or in short: expected time-to-resolve based on priority) as a part of this process.
 While we wanted to measure this, we made clear that these were guidelines.
 
 - SLAs were designed as trust-building signals, not performance weapons
 - Ownership stayed decentralized by allowing pod leads (PM + TL) to intake bugs, assign them to devs, and work them into sprint planning.
 
-**Principle 4: System Clarity > New tooling > new process**
+*Crucially:* We rolled out the new priority labels before SLA timelines to collect data on how the team naturally met the upcoming SLA guidelines.
+We found that the team resolved nearly 85% of `p1` and `p2` bugs, while `p3` and `p4` bugs (whose volume doubled higher priority issues) landed under 40% resolved.
 
-- Simplified priority taxonomy
-- Reduced dimensionality to improve adoption
-- Reduced meetings, eliminated interim owners from process, consolidated Slack channels for communications
+Couple months into rollout, we brought that number from under 40% to above 60%.
 
 **Principle 5: Data Visualization was our Primary Tool**
 
