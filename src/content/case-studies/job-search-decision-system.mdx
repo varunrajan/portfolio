@@ -1,9 +1,9 @@
 ---
-title: WIP - Making Job Search a Decision System
+title: Making Job Search a Decision System
 role: Chief of Staff, COO
 company: Chegg (Chegg Skills)
 dates: 2020-2021
-tldr: Drove adoption of new tooling for job seekers and career coaches, surfacing crucial insights into key success metrics and enabling just-in-time intervetion for interview prep.
+tldr: Drove adoption of new tooling for job seekers and career coaches, enabling just-in-time interview prep near-term and surfacing critical leading and lagging indicators to guide decision-making on major program changes.
 tags:
   - Decision Systems
   - Build vs. Buy
@@ -14,28 +14,87 @@ tags:
   - Process design
   - Zapier
   - Tableau
+  - Salesforce
 ---
+## Problem Overview: Bootcamp grads not getting hired and no visibility into why
 
-## WIP - Brief Overview
-
-Below you'll learn where I found myself, and a diagram detailing one of the outputs from this project (the tooling and workflows that supported internal teams and customers).
-Soon this page will lay out the decision intelligence we enabled, and how we eventually had to set our sights further upstream than the Career Services Organization.
-
-More to come!
-
-## The Problem: Bootcamp grads not getting hired and no visibility into why
+### Context
 
 Chegg Skills provided online programs to train students for entry-level software engineers, data analysts, UX designers, and more. Every program came with 6 months of dedicated career coaching upon graduation.
 Moreover, each graduate was guaranteed a job within six months, as long as they met a baseline level of job search activity, or get their tuition refunded.
 
-It was clear that graduates were having a rough time: the market was tumultuous, and there were murmurs across the career coaching team that many of their graduates were either unable or unwilling to conduct a respectable job search.
+It was clear that graduates were having a rough time: the job market was tumultuous, and there were murmurs across the career coaching team that many of their graduates were either unable or unwilling to conduct a respectable job search.
 
-Despite coaches' heroic efforts to maintain high quality coaching with rapidly expanding roster of new jobseeking graduates, they had meager visibility into their students' day-to-day activities and overall progress.
-This meant the organization was worried, wasn't sure why, and didn't know what to do about it.
+Visibility for coaches depended on self-reported spreadsheets and manual check-ins, which didn't scale with rapid caseload growth.
 
-I came on as a generalist hired gun: part Chief-of-Staff/part Product Manager, to start capturing what happened off-platform.
+### Resulting Chaos
+
+The org couldn't tell **who needed help, who was gaming the system,** or **whether the guarantee itself put the business at risk**.
+
+In other words: they couldn't distinguish between **bad luck, bad heavior, and bad systems**.
+
 It was crucial that we find ways to best serve our graduates, get them hired, empower our coaches to facilitate that success, and remove a potentially high liability for the business.
 
-## At a Glance: The System We Designed
+I came on as a product-minded Chief-of-Staff to turn moral & financial risk into something the department could reason about.
+
+And I set my sights on turning off-platform activity into *decision-grade signals*.
+
+## The Output: Solutions Implemented, Decisions Enabled
+
+Before diving into the process, here's what we did and how it helped:
+
+**What Changed**
+- Rolled out Huntr (post-build v. buy analysis) across our jobseeker population
+  - Leveraged webhooks via Zapier to:
+    - update CRM (Salesforce) for Careers org to determine population-level jobseeker status health
+    - event-driven alerts for coaches to reach out for just-in-time interview prep
+- Built separate data warehouse using event & entity data to build predictive hiring models
+  - Worked with data engineering & scientists to understand leading indicators of successful vs. stagnant hires
+  - Defined "heatlhy jobseeker" and compliance metrics
+  - Pushed segmentation & hireability logic (different playbooks for different jobseekers)
+  - Produced interactive Tableau visualizations
+
+**What it enabled for the Careers Organization**
+- Quick coach alerts to intervene ahead of meaningful events (screens & interviews)
+- Reduced "invisible job search" states
+- Consistent source of truth for the organization
+  - Employer relations representatives could query and make more effective intros
+
+**What it enabled for Executive Leadership**
+- Shared language to analyze and predict jobseeker performance
+- Built targets, cohort cuts, and attribution to understand what interventions were working
+  - Defined baseline hired rate trajectory to forecast impact of operational improvements vs. experiments
+- Funded program-level interventions for stagnant jobseekers
+  - Based on quicker detection of stagnation at a cohort level
+- Launched upstream course and program overhauls inspired by data-driven discoveries
+
+### At a Glance: The System We Designed
+After settling on Huntr as our tool of choice for the org and coordinating consent retreival process with Legal, I documented the workflows so the team could independently troubleshoot and make changes if the needs arose.
 
 ![Career Services Decision System](/diagrams/jobseeker-coach-action-flowchart.png)
+
+## Step 1: Define the Gaps and what comes first
+
+Having learned most of what I detailed above from Leadership, I conducted interviews with all major stakeholders to understand major pain points and how the org functioned as a whole:
+
+- Career coaches for all program grads
+- Select Academic Success Managers: those who worked with students prior to graduation
+- Students
+  -Current students
+  - Struggling, actively job-seeking graduates
+  - Recent successfully hired graduates
+- Product and Engineering teams
+
+My conversations yielded additional clarifying insights:
+
+1. Coaches were overloaded with increasing load of jobseekers
+2. 
+3. Building new custom tooling would be expensive
+    - All software development was committed to marketing, admissions (sales), and education
+    - This would require lobbying, validating, designing new systems
+4. 
+
+## Step 2: Quickly Explore options
+
+
+## Principles & Tradeoffs
