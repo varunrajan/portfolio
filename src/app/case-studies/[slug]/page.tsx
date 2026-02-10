@@ -2,9 +2,7 @@ import { notFound } from 'next/navigation';
 import Section from '@/components/Section';
 import Button from '@/components/Button';
 import { getAllCaseStudySlugs, getCaseStudyBySlug } from '@/lib/case-studies';
-import { remark } from 'remark';
-import html from 'remark-html';
-import remarkGfm from 'remark-gfm';
+import CaseStudyMdx from '@/components/CaseStudyMdx';
 
 // Generate static params for all case studies
 export async function generateStaticParams() {
@@ -29,14 +27,6 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   };
 }
 
-async function markdownToHtml(markdown: string) {
-  const result = await remark()
-    .use(remarkGfm)
-    .use(html)
-    .process(markdown);
-  return result.toString();
-}
-
 export default async function CaseStudyPage({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = await params;
   const caseStudy = getCaseStudyBySlug(slug);
@@ -44,8 +34,6 @@ export default async function CaseStudyPage({ params }: { params: Promise<{ slug
   if (!caseStudy) {
     notFound();
   }
-
-  const contentHtml = await markdownToHtml(caseStudy.content);
 
   return (
     <>
@@ -79,10 +67,9 @@ export default async function CaseStudyPage({ params }: { params: Promise<{ slug
       </Section>
 
       <Section className="bg-bg-page">
-        <article
-          className="max-w-4xl mx-auto case-study-prose"
-          dangerouslySetInnerHTML={{ __html: contentHtml }}
-        />
+        <article className="max-w-4xl mx-auto case-study-prose">
+          <CaseStudyMdx content={caseStudy.content} />
+        </article>
       </Section>
     </>
   );
