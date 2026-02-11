@@ -1,5 +1,5 @@
 ---
-title: WIP - Making Job Search a Decision System
+title: Making Job Search a Decision System
 role: Chief of Staff, COO
 company: Chegg (Chegg Skills)
 dates: 2020-2021
@@ -103,8 +103,175 @@ My conversations yielded additional clarifying guardrails:
 
 ## Step 2: Defining Principles & Tradeoffs
 
+**Principle 1: Fewer, Clearer Leading Indicators > Exhaustive Data Collection**
+
+We deliberately narrowed the signals collected.
+- Defined "meaningful activity" as job Applications, Phone Screens, First and Second Interviews
+- Determined that networking activity (e.g. outreach, informational interviews) was too noisy to measure reliably
+  - We highly encouraged jobseekers to network aggressively and track their efforts 
+  - We did not anchor early models on it
+
+*The tradeoff:* We sacrificed visibility into upstream networking gaps, knowing this area would go undetected.
+
+I argued it was worth narrowing the data set to achieve a forecasting model faster.
+
+*The result:* High application + low interview volume revealed key deficiencies further upstream in the actual program pre-graduation. Networking wouldn't have solved that.
+
+**Principle 2: Business Visibility > Jobseeker UX**
+- We standardized workflows across our jobseeker population, even though:
+  - It reduced nuances in individual interview processes
+  - It forced all jobseekers into the same interface
+  - It prioritized fast event routing over polished UI
+
+This let us meet coaches inside *their* current tooling (e.g. Slack, Salesforce) instead of building new internal dashboards.
+
+
+*The tradeoff:* Adoption lagged, and rollout was slower than expected. Spreadsheet users offered meaningful resistance.
+
+*The result:* Early adopters triggered system to alert coaches, who intervened to prep their clients. This led to better outcomes for those jobseekers, and a virtuous cycle of success stories coaches could evangelize to encourage more adoption.
+
+**Principle 3: Coach Action > Comprehensive Analysis**
+
+Alert first, intervene immediately, instrument later.
+- Built event-driven business workflows before the data pipelines for analysis and forecasting
+- Avoided waiting for custom builds that would have delayed relief for frontline teams
+
+*The tradeoff:* We contaminated our ability to measure a clean "before" state because operational improvements were happening in real time.
+
+I argued this was reasonable and necessary: Careers wasn't a lab. It was a live business with financial risk. Improving outcomes immediately mattered more than isolating measurement.
+
+*The result:* Executive forecasting matured to inform larger program changes and systemic interventions, including upstream academic program overhauls.
+
+
+**Principle 4: Speed of Iteration > System Completeness**
+- Prioritized tools with minimal engineering lift
+- Launched with partial visibility
+- Deferred complex behavioral metrics
+- Accepted that definitions would evolve as we learned
+
+*The tradeoff:* Blind spots existed and persisted early (networking, behavioral nuances, segmentation complexity)
+
+*The result:* We rolled out a system that could evolve rather than waiting for a perfect internal system.
+
+
 ## Step 2: Build vs. Buy vs. Buy vs. Buy
+
+### Build (Rejected Early)
+We considered building internal tooling to manage job search tracking for grads and coaches.
+
+**Why we didn't:**
+- Coaches needed relief immediately.
+- We had yet to determine which signals mattered most.
+- Engineering was committed to admissions, marketing, and education initatives.
+- Custom builds would have required lobbying, validation, months of iteration.
+
+**Tradeoff:**
+We sacrificed full control over UX and scheme in favor of speed and surface area.
+
+### Buy #1: Huntr (Selected)
+
+Huntr offered:
+- Kanban-based job tracking
+- Simple admin-level visibility
+- Webhooks + API access
+- Customizable fields
+- Chrome extension to reduce friction
+
+Ultimately, the event surface and API was Huntr's real value rather than the UI.
+
+**Why Huntr won**
+- Immediate activity instrumentation
+  - Webhooks allowed Zapier compatibility
+  - Ability to push events into Salesforce + Slack
+- Fast org-wide rollout without engineering dependency
+
+**Tradeoff**
+Not built for enterprise-scale forecasting out of the box, so we needed to build out our own data logic for the decision intelligence.
+
+### Buy #2: Evaluate Alternatives (e.g. Placement.com, TealHQ)
+
+We explored alternatives that boasted:
+- Stronger coach/admin tooling
+- More direct job matching + job board integrations
+- More customized reporting
+- Cleaner UIs
+
+**Why these tools lost**
+
+Ultimately: slower rollout potential, much less control
+- Less mature event routing capability
+- Reporting required custom builds
+
+Huntr wasn't perfect, but it was the fastest path to operational leverage followed by instrumentation. Remember: we prioritized impact now, while collecting data to be structured in the future.
 
 ## Step 3: Roll out, document, implement
 
+### Rollout Strategy
+
+- Coordinated consent retrieval with Legal before onboarding
+- Phased invitation waves to avoid overwhelming coaches
+- Identified early adopters to demonstrate value
+- Standardized board templates to reduce noise
+
+### Change Management
+
+With coaches overloaded, we:
+- Met them in Slack instead of asking them to learn new dashboards
+  - Kept cohort-level analysis to org (and eventually, executive) leadership early on
+- Routed interview events to public channels but tagged coaches for visibilty
+- Immediately reduced manual spreadsheet auditing
+
+Grad motivation was uneven:
+- New grads adopted quickly
+- Many spreadsheet-native grads resisted
+- Success stories from early adoption created internal evangelism
+
+### Documentation
+- Created workflow diagrams so team could troubleshoot independently
+- Clarified how Huntr interacted with Zapier, Salesforce, Typeform, and Slack
+- Reduced reliance on single technical owner
+
+**Result:**
+
+The system became operational, iterable infrastracture rather than an experiment.
+
 ## Step 4: Build decision logic
+
+Rollout enabled immediate event visibility. Shortly after, we shifted from monitorning to reasoning.
+
+### Defining the "Healthy Jobseeker"
+
+We went from anecdotes to structured criteria:
+- Consistent application volume
+- Interview conversion activity
+- Timelines-to-hire from graduation
+- Compliance thresholds for tuition-refund guarantee eligibility
+
+### Segment and Diagnose
+
+We surfaced the following patterns:
+- High applications -> low interview volume
+  - Revealed broader skills gaps that broke down into what we could fix and where
+- Low applications -> low interviews
+  - Revealed motivation or coaching gaps
+- Strong early interview volume
+
+This produced differentiated playbooks vs. either ad-hoc, completely customized OR one-size-fits-all coaching.
+
+### Forecast and Attribute
+
+- Establisehd baseline hired-rate trajectories by cohort
+- Built targets and compared actuals against expected paths
+- Separated:
+  - Operational improvements
+  - Experiments
+  - Structural constraints
+
+This shifted conversations with execs from "Are we hitting the number?" to *"Which lever is moving the number?"*
+
+### Impact
+
+The data eventually supported:
+- Funding program-level interventions
+- Remediation for stagnant cohorts
+- Course-level overhauls innspired by skill gap patterns
