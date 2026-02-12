@@ -72,7 +72,7 @@ export default async function CaseStudyPage({ params }: { params: Promise<{ slug
 
       <Section className="bg-bg-page">
         <div className="flex flex-col lg:flex-row lg:gap-xl">
-          <CaseStudyTableOfContents headings={headings} slug={slug} />
+          <CaseStudyTableOfContents headings={headings} slug={slug} maxDepth={2} />
           <article className="flex-1 min-w-0 max-w-4xl case-study-prose">
             <CaseStudyMdx content={caseStudy.content} />
           </article>

@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect, useState, useCallback } from 'react';
+import { useEffect, useState, useCallback, useMemo } from 'react';
 import Link from 'next/link';
 import type { TocHeading } from '@/lib/remark-heading-ids';
 
@@ -13,6 +13,8 @@ const TOC_BREAKPOINT = 1024;
 interface CaseStudyTableOfContentsProps {
   headings: TocHeading[];
   slug: string;
+  /** Max heading level to show in ToC (2 = h2 only, 4 = h2–h4). Default: 2 */
+  maxDepth?: number;
   /** Content wrapper selector for scroll spy (e.g. '.case-study-prose') */
   contentSelector?: string;
   /** Class name for the active heading in ToC */
@@ -60,17 +62,23 @@ function TocItem({
 export default function CaseStudyTableOfContents({
   headings,
   slug,
+  maxDepth = 2,
   contentSelector = '.case-study-prose',
   activeClassName = 'text-text-heading font-medium',
 }: CaseStudyTableOfContentsProps) {
   const [activeId, setActiveId] = useState<string | null>(null);
   const [isOpen, setIsOpen] = useState(false);
 
+  const tocHeadings = useMemo(
+    () => headings.filter((h) => h.level <= maxDepth),
+    [headings, maxDepth]
+  );
+
   const updateActiveHeading = useCallback(() => {
     const content = document.querySelector(contentSelector);
-    if (!content || headings.length === 0) return;
+    if (!content || tocHeadings.length === 0) return;
 
-    const headingElements = headings
+    const headingElements = tocHeadings
       .map((h) => document.getElementById(h.id))
       .filter((el): el is HTMLElement => el !== null);
 
@@ -101,18 +109,18 @@ export default function CaseStudyTableOfContents({
     } else {
       setActiveId(null);
     }
-  }, [headings, contentSelector, slug]);
+  }, [tocHeadings, contentSelector, slug]);
 
   const handleHashChange = useCallback(() => {
     const hash = window.location.hash.slice(1);
-    if (hash && headings.some((h) => h.id === hash)) {
+    if (hash && tocHeadings.some((h) => h.id === hash)) {
       setActiveId(hash);
     }
-  }, [headings]);
+  }, [tocHeadings]);
 
   useEffect(() => {
     const hash = window.location.hash.slice(1);
-    if (hash && headings.some((h) => h.id === hash)) {
+    if (hash && tocHeadings.some((h) => h.id === hash)) {
       setActiveId(hash);
       const el = document.getElementById(hash);
       if (el) {
@@ -121,7 +129,7 @@ export default function CaseStudyTableOfContents({
     } else {
       updateActiveHeading();
     }
-  }, [headings]);
+  }, [tocHeadings, updateActiveHeading]);
 
   useEffect(() => {
     updateActiveHeading();
@@ -133,20 +141,18 @@ export default function CaseStudyTableOfContents({
     };
   }, [updateActiveHeading, handleHashChange]);
 
-  const buildNestedItems = (): { heading: TocHeading; depth: number }[] => {
+  const buildNestedItems = (headingsToUse: TocHeading[]): { heading: TocHeading; depth: number }[] => {
     const result: { heading: TocHeading; depth: number }[] = [];
-    let prevLevel = headings[0]?.level ?? 2;
-
-    for (const heading of headings) {
+    for (const heading of headingsToUse) {
       const depth = Math.max(0, heading.level - 2);
       result.push({ heading, depth });
     }
     return result;
   };
 
-  const nestedItems = buildNestedItems();
+  const nestedItems = buildNestedItems(tocHeadings);
 
-  if (headings.length === 0) return null;
+  if (tocHeadings.length === 0) return null;
 
   return (
     <>
