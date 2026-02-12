@@ -2,7 +2,9 @@ import { notFound } from 'next/navigation';
 import Section from '@/components/Section';
 import Button from '@/components/Button';
 import { getAllCaseStudySlugs, getCaseStudyBySlug } from '@/lib/case-studies';
+import { parseCaseStudyContent } from '@/lib/parse-case-study';
 import CaseStudyMdx from '@/components/CaseStudyMdx';
+import CaseStudyTableOfContents from '@/components/CaseStudyTableOfContents';
 
 // Generate static params for all case studies
 export async function generateStaticParams() {
@@ -34,6 +36,8 @@ export default async function CaseStudyPage({ params }: { params: Promise<{ slug
   if (!caseStudy) {
     notFound();
   }
+
+  const { headings } = parseCaseStudyContent(caseStudy.content);
 
   return (
     <>
@@ -67,9 +71,12 @@ export default async function CaseStudyPage({ params }: { params: Promise<{ slug
       </Section>
 
       <Section className="bg-bg-page">
-        <article className="max-w-4xl mx-auto case-study-prose">
-          <CaseStudyMdx content={caseStudy.content} />
-        </article>
+        <div className="flex flex-col lg:flex-row lg:gap-xl">
+          <CaseStudyTableOfContents headings={headings} slug={slug} maxDepth={2} />
+          <article className="flex-1 min-w-0 max-w-4xl case-study-prose">
+            <CaseStudyMdx content={caseStudy.content} />
+          </article>
+        </div>
       </Section>
     </>
   );

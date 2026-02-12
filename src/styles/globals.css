@@ -119,6 +119,11 @@
     color: var(--color-text-body);
     line-height: 1.7;
   }
+  .case-study-prose h2,
+  .case-study-prose h3,
+  .case-study-prose h4 {
+    scroll-margin-top: 6rem;
+  }
   .case-study-prose h2 {
     font-size: var(--text-2xl);
     font-weight: 700;
