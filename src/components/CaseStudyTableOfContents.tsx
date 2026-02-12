@@ -95,7 +95,9 @@ export default function CaseStudyTableOfContents({
         break;
       }
     }
-    if (!current && headingElements[0]) {
+    // Don't fall back to first heading when at top of page—avoids adding a hash
+    // on initial load, which would trigger unwanted scroll
+    if (!current && scrollTop > 0 && headingElements[0]) {
       current = headingElements[0].id;
     }
 
