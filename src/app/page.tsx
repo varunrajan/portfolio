@@ -84,10 +84,10 @@ export default function Home() {
   return (
     <>
       <Section className="bg-bg-page">
-        <header className="py-3xl">
+        <header className="pb-3xl">
           <div className="grid grid-cols-1 md:grid-cols-[minmax(0,0.45fr)_minmax(0,0.55fr)] gap-xl md:gap-2xl items-center">
             {/* Left column: photo */}
-            <figure className="flex justify-center md:justify-start order-1 md:order-none w-full max-w-[85%] md:max-w-none mx-auto md:mx-0">
+            <figure className="flex justify-center md:justify-start order-2 md:order-none w-full max-w-[85%] md:max-w-none mx-auto md:mx-0">
               <div className="relative w-full max-w-sm md:max-w-full flex items-center justify-center">
                 <img
                   src="/photos/varun-hero.jpeg"
@@ -101,7 +101,7 @@ export default function Home() {
             </figure>
 
             {/* Right column: hero content */}
-            <div className="order-2 md:order-none text-left">
+            <div className="order-1 md:order-none text-left">
               <h1 className="text-4xl font-bold text-text-heading mb-md">
                 Turn Your Organization Into a High-Trust, High-Output Machine
               </h1>
