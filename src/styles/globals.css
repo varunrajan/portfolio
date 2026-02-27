@@ -236,3 +236,23 @@
     mask-repeat: no-repeat;
   }
 }
+
+.built-heading {
+  margin-bottom: 1rem;
+}
+
+@media (min-width: 900px) {
+  .hero-header {
+    padding-bottom: 0 !important;
+  }
+  .built-heading {
+    position: sticky;
+    bottom: 0;
+    z-index: 10;
+    background-color: rgba(11, 15, 20, 0.7);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    padding: 0.75rem 0 1rem;
+    margin-bottom: 0;
+  }
+}
