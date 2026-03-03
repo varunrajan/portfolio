@@ -1,0 +1,104 @@
+---
+title: Designing a Scalable Learning Platform
+role: Product Manager, Education & Operations
+company: Thinkful
+dates: 2015-2018
+tldr: Audited an education platform, prototyping and operationalizing a scalable, multi-role project review system that reduced remediation and eliminated significant refund risk before full platform rollout.
+tags:
+  - Product Principles
+  - Product Strategy
+  - Google Apps Script
+  - Zapier
+  - Prototyping
+  - PostgreSQL
+  - Heroku Dataclips  
+---
+
+## Context
+
+Thinkful was an online school whose flagship program was a web development bootcamp: students would commit 20-25 hours a week to the coursework, while meeting 2-3 times a week with a mentor who was a working developer. It was a "flexible" bootcamp, as students largely went through the program individually.
+
+Upon graduating, they would enter the job market for software engineering jobs with a portfolio of projects they built themselves, and receive 6 months of career services. If they didn't get a job within that timeframe, Thinkful would refund them their full tuition.
+
+Each student had a dedicated Program Manager (PM): account managers with both technical and education chops who could bridge some of the gaps in the program: PMs would spend some extra time helping the student get unstuck, finding them a new mentor, or connect them with a resource ad hoc to give their job search a boost.
+
+Also, crucially: **PMs were responsible for graduating a student**
+
+## The Problem: Students approach graduation with horrifying quality of work
+
+PMs surfaced something was woefully wrong: a number of students were getting to the end of the program nowhere near ready to land a job. Their portfolio websites and projects were visually unappealing and betrayed real gaps in their skill sets.
+
+This left our PMs with a dilemma: the student had paid thousands of dollars and sunk roughly 6 months of work into becoming a developer. It would be:
+1. unfair to make them stay in the program and pay more when the program failed them.
+1. A drain on resources letting them stay in the program for free
+1. graduate them and risk having to refund them since they were unlikely to get jobs
+
+So the PMs opted to invest extra time of their own in what they called the "Portfolio Grace Period" - a remedial program where they'd work with the student directly to fill program gaps and improve their projects.
+
+Effective stopgap measure, but more students were slipping through the cracks fast and we couldn't **scale the goodwill of our employees**.
+
+What the hell were we going to do about this?
+
+## The Audit
+
+To this point, the education product was a web application that served the curriculum, tracked linear student progress, and facilitated mentorship through a video calling platform.
+
+If students reached the end unprepared, there were likely multiple points of failure scattered throughout the program and product.
+
+I mapped out the program structure and conducted dozens of interviews across:
+- students (current students, dropouts, successful graduates, successfully placed jobseekers) 
+- mentors (new, longstanding, those who only met with students as well as those who've helped us write curriculum)
+- internal stakeholders (Program Managers, Student Support, Curriculum team)
+
+## Defining Success
+
+I identified a plethora of potential opportunities for program and platform improvements.
+
+In a world with unlimited opportunities, **focus was critical.** And I decided to narrow focus by **defining Product Principles**. In other words: what should our product do?
+
+I set three principles our product should aspire to: Focus, Accountability, and Motivation (or Excitement).
+
+I argued we immediately prioritize focus (clear expectations) and accountability (early submission feedback). Motivation was long-term, but we had to stop the immediate leaks first.
+
+
+### Misaligned Incentives
+
+The key structure gap became clear: students landed in this grace period due to unclear accountability. Haivng developed a personal relationship with students through the program, they felt reticent to push hard feedback.
+
+Moreover, while we encouraged project submission in the app, it was a social feature: submitted project links were captured to share with other students and mentors to invite feedback, but we never required it. More often than not, this meant great projects got great feedback, and subpar projects didn't get much. Who wants to jump in just to tear some paying student down?
+
+### Measurement Gaps
+
+I introduced a tracking flag for these grace period students: while we caught this early, we knew this was a lagging indicator whose numbers would grow as we investigated and rolled out a solution.
+
+Problem was: we had no metric on this.
+
+I found a creative reuse for dataabse-level feature flags and built interactive spreadsheets to track students entering this state over time to help our PMs manage students in this state without relying on their own devices to stay organized on this.
+
+
+## The Solution
+
+We built a project review system that we designed with input from our mentor pool, curriculum team, Program Managers, and student feedback.
+A trusted group of mentors reviewed the projects via a rubric, segmented by their strength or expertise. Ths introduced earlier constructive feedback and clear expectations tied to curriculum milestones.
+
+Student submits project -> project enters queue -> mentor designated as a reviewer can claim -> mentor is sent form with rubric to review project -> mentor submits feedback and "passes" or "fails student" -> student receives feedback
+
+### The Alpha
+
+Simple system, but with a lot of steps, and a system that was introduced at several points throughout the program. We rolled it out to one or two to start, informed students and mentors in that area of the program accordingly, and waited to see how it went before a broader rollout.
+
+This also paired with a "phasing" initiative informed by our product discovery and principles work: we segmented the program into phases that students may pass or fail. We took Accountability quite seriously.
+
+As we realized how successful this was earlier in the program, we built out a prototype throughout every project submission step in the program.
+
+At this stage, we chose to forego engineering the process into the app for a couple of reasons:
+1. This was a disruptive change in the student experience. While we defined this thoroughly and got alignment internally, building a system we'd have to revert would be very expensive.
+1. Dev resources at this point were understandably committed to multiple growth and marketing efforts. We needed more validation to budget engineering resources.
+
+As a result, I wrote gnarly SQL queries to Heroku Dataclips, coded Google Apps Scripts to manipulate live query results to build an interactive prototype of a working project submission queue that mentors could jump into and claim projects for review. That Apps Script then triggered an email with a link to a Typeform link (with URL params filled with student, mentor, project info) that contained the rubric. And once the mentor filled out that Typeform, more notifcations to the student, their mentor, the Program Manager would keep everyone on the same page as to whether and why someone passed or failed.
+
+## The Outcome
+
+Within a few months, we ran the analysis on students entering the remedial state. In early days, 10-12 students were entering their grace period (all with varying times to resolution and graduation). By the time the prototype was operating across the entire program for 4 months, that number had gone down to 2-3 per month.
+
+Armed with this, we brought design and engineering in to build this process into the app itself, and I could retire all of my ugly scripts that kept this system afloat. I worked closely with engineering to define data models to segment mentors by capability such that the right skill set was assessing what they were best equipped to assess.
