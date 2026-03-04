@@ -1,0 +1,180 @@
+---
+title: From Dropdowns to Discovery - Transforming Teachable's Ticket Submission System
+role: Product Manager, Internal Tools
+company: Teachable
+dates: 2018-2019
+tldr: To alleviate the burden on Customer Service, I designed an end user-facing search-first help system that unified support and reduced inbound tickets by 15%.
+tags:
+  - Design Sprint
+  - Product Strategy
+  - User Testing
+  - A/B Testing
+  - Reject the Premise
+---
+
+## Context
+
+Teachable is a platform where creators and companies could build and sell courses, coaching, and membership online. This is both B2C and B2B, with a product that contains multiple complex workflows, interfaces, and ever-evolving feature-sets to meet user needs.
+
+Teachable's customer support intake system (i.e. the in-product "Help Form") had become increasingly brittle as the product expanded.
+
+At first, the system relied on **static dropdown logic** to route tickets. Over time, new product features, compliance requirements (e.g. GDPR), and support workflows kept being added by nesting more dropdown options.
+
+Moreover, the company wanted to reduce reactive support volume and shift toward Customer Success-style engagement.
+
+## The Problem
+
+**The Customer Care team requested** that we continue extending this pattern by adding **more nested dropdowns** so tickets could be categorized more precisely.
+
+I recognized that this approach *would not scale*, because:
+- Product complexity was growing rapidly
+- Dropdown logic would constantly lag behind new product features
+- Support teams were spending time triaging tickets that could potentially be self-served
+
+## TL;DR: What we Achieved
+
+Instead of expanding the form logic as requested, I proposed discovery, scoping, and delivery of a support-deflection system that would:
+1. Intercept support requests earlier
+1. Encourage users to self-serve through Knowledge Base articles
+1. Only generate a support ticket if self-service failed.
+
+The solution became a **persistent help widget** embedded across the product.
+
+This widget empowered users to:
+1. Search for help directly within the product, without navigating to a separate ticket submission page. This allowed:
+  1. The school owner to have full visual context of what they were struggling with
+  1. Customer Care to have better ticket submission details as a result, due to more accurate metadata and user-submitted descriptions
+1. Surface Knowledge Base articles dynamically as they matched search terms
+
+The text they typed in the search box automatically became the **ticket subject**, which reduced form friction.
+
+An A/B test showed a 15% reduction in support tickets (at a time we saw 6k-10k tickets/month), validating the approach. Anecdotal insights form the team also told us that ticket quality (ability to understand context and work to resolution) increased, while resolution times went down.
+
+### TL;DR: Build vs. Buy - the tools we leveraged
+
+This system used:
+- **Algolia** to search the Knowledge Base
+- **Zendesk** for ticketing and hosting Knowledge Base articles
+- **Custom engineering** to build the widget
+- **Pendo** was explored since we used it for in-app messaging and analytics, but ultimately rejected due to limited customization
+
+## Investigation & Process
+
+To recap: rather than immediately redesigning the form, I used the opportunity to run a *lightweight design sprint* to explore the problem with mutliple teams (Customer Care agents, Product Solutions, Knowledge Base Writers, Engineering, UX Design).
+
+This was inspired by the [Google Ventures Design Sprint framework](https://www.thesprintbook.com/the-design-sprint), but adapted for our environment. 
+
+*We were a Series A startup, we couldn't take a full week off to figure out what to build, come on.*
+
+As we mapped the current landscape, I surfaced more bottlenecks to (and opportunities beyond) fulfilling the original request:
+
+1. Many tickets were solvable via the Knowledge Base
+  - Teachable had invested heavily in Zendesk documentation, but users often **filed tickets before searching for answers**
+  - 46% of ticket submissions in Zendesk are done via email — this means CEs lost quite a bit of contextual account information that helps them do what they do best
+2. Support entry points were fragmented
+  - "myTeachable" was the company's SSO feature for users who had multiple schools: this was not adopted universally
+  - some users accessed support from `/admin` (the core content management surface), while others went to their myTeachable login
+  - **Crucially: 30% of all users** (those who didn't opt into SSO) **had no direct Help Form access**
+
+### Our Mapping Results: Diagrams & Flowcharts
+
+Below were how we mapped out existing and proposed workflows and bottlenecks before jumping into the design sprint. *Click to see details.*
+
+![This flowchart details the existing nested dropdown menu logic, constructed based on sampling and analysis of inbound ticket categories.](/diagrams/help-form-current-and-proposed-nested-dropdown-logic.png)
+
+![I built this flowchart to illustrate how users traversed several surfaces to get their questions answered: 1) Gray: the main product where frustration arises. 2) Red: the knowledge base, which hosted product education articles on a separate website. 3) Blue: Live chat with a support agent constructed based on sampling and analysis of inbound ticket categories. 4) Yellow: the Teachable SSO surface where the Help Form Lived 5) Green: off-platform communications](/diagrams/help-form-current-submission-workflow.png)
+
+
+![A simplified version of the user submission flow fleshed out above, with key surfaces and actions (search, navigate, submit) we wanted to consolidate. This illustrates the segmented user flows based on who opted into Teachable's SSO rollout, and how this severs the Help Form's ability to be effective.](/diagrams/help-form-current-access-points.png)
+
+### User Research
+
+Our UX Designer conducted **moderated usability tests** with creators. Members of the Customer Care team, especially the Knowledge Base team, shadowed these sessions live.
+
+This was valuable because it allowed those who rote the documentation to see firstahnd how users searched for help.
+
+Key observations included:
+- users often struggled to navigate dropdown-based support forms
+- users naturally tried to describe their problem in their own words
+- many participants *expected* a search-driven help experience similar to modern support widgets.
+
+These sessions reinforced that structured form logic **fought against natural user behavior**.
+
+### Reframing the problem
+
+The original request was:
+
+> Add more dropdown options to improve ticket routing.
+
+But my instinct (and the resulting research spike) revealed a much deeper issue:
+
+** Users were forced into structured categories before they had a chance to explore solutions.**
+
+The real opportunity was to shift the support flow from "categorize the porblem" to "search for help first"
+
+## The Solution
+
+### Sticky Help Entry Point
+
+A floating help icon (presented as the Teachable logo) appeared across the platform, creating a consistent support entry point regardless of whether users were in myTeachable, `/admin`, or other product surfaces.
+
+### Search-first experience
+
+Users began by typing their question. We integrated **Algolia** to surface relevant Zendesk Knowledge Base Articles in real time.
+
+### Progressive escalation to support
+
+If users still needed help, the widget expanded into a ticket submission flow. The user's search query automatically became the ticket subject, reducing friction in the process.
+
+### Hybrid architecture
+
+The final solution combined:
+- Zendesk (ticketing)
+- Algolia (search)
+- custom UI and engineering
+- limited use of Pendo (initial exploration)
+
+Pendo ultimately proved too rigid for our needs, particularly around URL parameters and product context.
+
+## Experimentation
+
+We ran an A/B test, allocating users by their school-based IDs (rather than SSO) to ensure users were bucketed consistently.
+This test compared the old, disjointed experience with the dropdown-based help form against the search-first Help Widget.
+
+Of course, the emails that came in from off-platform wouldn't have been allocated, so we needed to do some backdating of email addresses to which accounts were bucketed in which variant.
+
+The result:
+
+**15% ticket deflection**
+
+Meaning 15% of potential support requests were resolved through Knoweldge Base content instead of generating a ticket.
+
+
+## Principles & Tradeoffs
+
+**Principle 1**: Search scales better than dropdown logic
+
+Users should be able to describe their problem naturally rather than navigate rigid categories.
+
+Tradeoff: search relies heavily on documentation quality.
+
+
+**Principle 2**: Encourage self-service before escalation
+
+Help systems should surface answers before creating tickets.
+
+Tradeoff: users who want immediate human help may perceive friction.
+
+
+**Principle 3**: A single help entry point improves consistency
+
+A persistent help widget ensures that all users — regardless of login state — can access support.
+
+Tradeoff: deeper engineering investment compared to simple forms.
+
+
+**Principle 4**: Buy tools where possible, build where necessary
+
+We explored Pendo for in-product help but ultimately needed custom engineering to support Teachable’s workflows.
+
+Tradeoff: higher implementation complexity. Worth it in the end.
