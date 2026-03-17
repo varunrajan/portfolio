@@ -161,6 +161,33 @@
   .case-study-prose li:last-child {
     margin-bottom: 0;
   }
+  .case-study-prose p + ul,
+  .case-study-prose p + ol {
+    margin-top: 0;
+  }
+  .case-study-prose ul + p,
+  .case-study-prose ol + p {
+    margin-top: 0;
+  }
+  .case-study-prose ul:has(+ b),
+  .case-study-prose ul:has(+ p),
+  .case-study-prose ol:has(+ b),
+  .case-study-prose ol:has(+ p) {
+    margin-bottom: 0;
+  }
+  /* Remove all spacing between b/p and following elements inside details */
+  .case-study-prose details b + p,
+  .case-study-prose details b + ul,
+  .case-study-prose details p + p,
+  .case-study-prose details p + ul {
+    margin-top: 0;
+  }
+  .case-study-prose details b:has(+ p),
+  .case-study-prose details b:has(+ ul),
+  .case-study-prose details p:has(+ p),
+  .case-study-prose details p:has(+ ul) {
+    margin-bottom: 0;
+  }
   .case-study-prose a {
     color: #60a5fa;
     text-decoration: underline;
@@ -253,7 +280,23 @@
     border-bottom: 1px solid var(--color-neutral-700);
   }
   .case-study-prose details > *:not(summary) {
-    padding: var(--spacing-md);
+    padding: 0 var(--spacing-xl);
+  }
+  .case-study-prose details > *:not(summary):nth-child(2) {
+    padding-top: var(--spacing-md);
+  }
+  .case-study-prose details > *:last-child {
+    padding-bottom: var(--spacing-md);
+  }
+  /* Bullets align with b/p text; hanging indent for wrapped lines */
+  .case-study-prose details ul,
+  .case-study-prose details ol {
+    padding-left: calc(var(--spacing-xl) + 1.5em);
+    list-style-position: outside;
+    list-style-type: disc;
+  }
+  .case-study-prose details ol {
+    list-style-type: decimal;
   }
 
   /* Hero image: soft fade on all edges, center stays opaque */
