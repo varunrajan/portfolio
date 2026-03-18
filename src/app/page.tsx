@@ -57,6 +57,7 @@ export default function Home() {
       company: 'Keming / Free Agency / Stealth Talent Startup',
       summary:
         'Co-founded and consulted across multiple tech talent initiatives—launching a podcast, newsletter, and community, coaching candidates, and building early-stage recruiting operations and best practices.',
+      caseStudyCompanies: ['Keming'],
       logos: [
           { src: '/logos/keming.jpeg', alt: 'Keming', label: 'Keming' },
           { src: '/logos/freeagency.jpeg', alt: 'Free Agency', label: 'Free Agency' },

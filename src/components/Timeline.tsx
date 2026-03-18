@@ -16,6 +16,8 @@ interface TimelineEntryProps {
   company?: string;
   /** Optional client/company logos (typically 1–3). Renders nothing if empty/undefined. */
   logos?: LogoItem[];
+  /** Optional explicit list of company names whose case studies to show. Overrides default company-name matching. */
+  caseStudyCompanies?: string[];
   link?: {
     href: string;
     label: string;
@@ -62,10 +64,16 @@ export default function Timeline({ entries, caseStudies = [] }: TimelineProps) {
       
       <div className="space-y-lg">
         {entries.map((entry, idx) => {
-          // Find all matching case studies by company name
-          const matchingCaseStudies = entry.company 
-            ? caseStudies.filter(cs => cs.company.toLowerCase() === entry.company?.toLowerCase())
-            : [];
+          // Find matching case studies: use caseStudyCompanies if provided, else match by entry.company
+          const matchingCaseStudies = entry.caseStudyCompanies?.length
+            ? caseStudies.filter(cs =>
+                entry.caseStudyCompanies!.some(
+                  name => cs.company.toLowerCase() === name.toLowerCase()
+                )
+              )
+            : entry.company
+              ? caseStudies.filter(cs => cs.company.toLowerCase() === entry.company?.toLowerCase())
+              : [];
 
           return (
             <div key={idx} className="relative flex gap-lg">
