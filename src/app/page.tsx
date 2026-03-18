@@ -116,7 +116,7 @@ export default function Home() {
                 Work With Me
               </Button>*/}
               <Button href="https://conviction.varunrajan.com/" variant="secondary" target="_blank" rel="noopener noreferrer">
-                Explore Conviction Team Coaching
+                How I Help Teams
               </Button>
             </div>
           </div>
