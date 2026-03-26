@@ -1,0 +1,165 @@
+---
+title: Rebuild Chegg's Checkout to Unlock Experimentation at Scale
+role: Senior Product Manager, Growth & Monetization
+company: Chegg
+dates: 2022-2025
+tldr: Turned a fragmented, multi-page purchase funnel into a modular checkout system that enabled parallel experimentation across pricing, UX, and international markets.
+tags:
+  - Product Strategy
+  - Funnel Optimization
+  - Optimizely
+  - A/B Testing
+  - Architectural Change
+---
+
+## Context
+
+Chegg's checkout was one of the highest-leverage surfaces in the business, and one of the hardest to make meaningful changes to.
+
+The purchase flow was spread across multiple pages, the interface was tightly coupled to backend Commerce systems, and challenging to experiment on without significant engineering overhead. At the same time, Checkout had effectively become a shared surface across multiple teams, without shared ownership of how experimentation should work.
+
+
+I reframed our mission as two core opportunities that could take us beyond any of the existing experiments or optimizations:
+
+
+1. The UX took the user (normally a university student) out of their learning journey, encouraging multiple full-page dropoff points
+2. The architecture of checkout itself limited our ability to learn and iterate with competing experiments.
+
+## Insight
+
+### Taking Inventory
+
+Structurally: our team was one of 4-5 teams simultaneously attempting to optimize individual steps in the funnel.
+
+We had a resubscribe flow the veteran commerce engineers swore for months was an incredible basis to replace all our checkout flows for maximum optimization possibility.
+
+And the core product was reinventing itself as a powerful personalized learning tool.
+
+Experientially: Early UX Research suggested that our core product -- where a student would come to answer to a question, and pay to unlock and reveal the full content -- was closer to online journalism and paid written content products, than it was to other products in education. These flows leveraged modal-based checkout, keeping the context of what the user was reading and hoping to reveal, in view of the user while prompting conversion.
+
+### The Opportunity
+
+The real constraint wasn’t only UX: it was that we had no coherent system for how experiments interacted with each other.
+I advocated for our team to treat checkout as a system for experimentation, instead of a segmented purchase flow.
+
+If we could unify the experience into a single, modular surface, we could:
+- reduce friciton across devices and markets
+  - keep the user in the context of the page they were trying to unlock
+  - fewer page loads, better perceived speed
+- run faster experiments
+- coordinate better across initiatives
+
+
+This led to the concept of **Simplified Checkout (SCO)**.
+
+For what it's worth, I hated the name. It was too reductive and lacked the gravitas of the kind of overhaul we set out to achieve. But it came up during a meeting, it was easy to remember, and it stuck.
+
+
+<details>
+
+<summary>My narrative from the Launch Announcement archives</summary>
+<blockquote> Chegg is on a mission to transform what we offer students and how we encourage them to trust us with their learning journey. We’re
+launching daring, step-function changes to our core QnA product, carving a path towards more personalized learning, all while returning to
+growth.
+<br><br>
+As we ship, learn, pivot, and advance: Chegg needs a checkout experience that is as ambitious and nimble as our approach to the core
+product.
+<br><br>
+This week, Team Nitehawk launches a revamped and redesigned Simplified Checkout – a modal-based checkout flow that keeps students
+in the core experience while subscribing. Near-term: we remove friction to drive acquisitions. Long-term: we supercharge monetization
+efforts by unifying checkout flows, and configure the right checkout for the right product experience.</blockquote>
+</details>
+
+## The System We Built
+
+We replaced the legacy multi-page funnel with a **modal-based checkout architecture** that consolidated the entire purchase experience into a single expperimentable surface.
+
+This included:
+1. Unified checkout modal
+  - plan selection, payment, and confirmation in one flow
+  - reduced navigation friction
+  - created a single point of control for experiments
+    - allowed for multi-page checkouts when deemed appropriate for new checkout flows
+
+2. Authentication within the flow
+  - removed breakpoints between login and purchase
+  - preserved user intent
+
+3. Modular components
+  - Pricing, messaging, and UI elements could be tested independently
+  - Enabled rapid iteration without reworking the entire flow
+
+
+## Complexity
+
+### Coordinating a Multi-Threaded Experimentation System
+
+Checkout wasn't owned by a single team or initiative. We had multiple concurrent efforts:
+
+- multi-month subscription experiments
+- mobile web checkout redesigns
+- international checkout variants
+
+Running these independently with our experimentation setup would lead to:
+
+- conflicting experiment results
+- overlapping user exposure
+- unreliable data
+
+So we treated experimentation design in itself as a product problem. I helped define how we:
+
+- segmented users (new vs. returning, geo-based splits)
+- allocated traffic across experiments
+- ensured clean measurement across overlapping intiatives
+
+
+Because this was an architecture overhaul, testing it required multiple phases with different competing priorities with other teams.
+This required weighing tradeoffs and mapping out sequencing and allocation alongside Data Science, Product Marketing, and other Product Teams. At times, it involved diplomatically killing other teams' experiments. 😬
+
+<details>
+
+<summary>See some visualizations I put together to align on experiment setup</summary>
+
+![This is one of many flowcharts illustrating planning multiple Simplified Checkout rollout and testing options alongside other funnel optimization tests. Drove alignment for these across Data Science, Product Marketing, and other Commerce Product teams.](/diagrams/simplified-checkout-planning-experiment-rollout.png)
+![More checkout experiment management, after initial rollout](/diagrams/simplified-checkout-experiment-allocation.jpg)
+
+
+</details>
+
+
+Following multiple large-scale experiments with meaningful iterations in between, our initial rollout Simplified Checkout drove 14k additional subscribers.
+This was akin to a 2% increase in our overall conversion funnel, and added ~$4.5M annualized to the balance sheet.
+
+That was from the critical mass of UX changes alone.
+
+We also enabled Product Marketing to independently run experiments via Optimizely Web, decoupling messaging iteration from engineering cycles.
+
+Beyond improving conversion initially, we enabled:
+- faster experimetnation cycles across checkout
+- multiple concurrent initiatives without data conflicts
+- swifter rollout of pricing and promotional experiments
+- a foundation for future growth work (couponing, behavioral nudges, etc.)
+
+Instead of a rigid funnel, we now had a **flexible experimentation platform** at the point of purchase.
+
+## Principles & Tradeoffs
+
+**1. Structural changes over local optimizations**
+
+We prioritized redesigning the system over incremental improvements to individual steps.
+
+**2. Experimentation integrity over team autonomy**
+
+We decided on whether to run or limit overlapping experiments to ensure clean data, even when it slowed individual teams.
+
+**3. Long-term velocity over short-term gains**
+
+We accepted upfront complexity to enable faster iteration over time.
+
+**4. Introduce shared constraints in a multi-team system**
+
+Checkout remained a multi-team surface, but we introduced shared platforms (modal architecture, experiment allocation) that teams had to operate within.
+
+Later that year, Chegg shifted toward a vendor-based commerce approach as part of broader cost-cutting measures.
+
+While this limited the long-term evolution of the system, the work demonstrated how structural changes to checkout could unlock both immediate gains and faster experimentation cycles.
