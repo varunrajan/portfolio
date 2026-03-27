@@ -95,23 +95,21 @@ export default function CaseStudyTableOfContents({
         break;
       }
     }
-    // Don't fall back to first heading when at top of page—avoids adding a hash
-    // on initial load, which would trigger unwanted scroll
+    // Don't fall back to first heading when at top of page
     if (!current && scrollTop > 0 && headingElements[0]) {
       current = headingElements[0].id;
     }
 
+    // Scroll spy only updates highlight state. Do not call replaceState here—
+    // syncing the URL as you scroll made the address bar show a hash, and the
+    // mount effect then treated it like a deep link and scrolled (worse under
+    // React Strict Mode remounts). URL updates stay on explicit TOC clicks.
     if (current) {
-      setActiveId((prev) => {
-        if (prev !== current) {
-          window.history.replaceState(null, '', `/case-studies/${slug}#${current}`);
-        }
-        return current;
-      });
+      setActiveId(current);
     } else {
       setActiveId(null);
     }
-  }, [tocHeadings, contentSelector, slug]);
+  }, [tocHeadings, contentSelector]);
 
   const handleHashChange = useCallback(() => {
     const hash = window.location.hash.slice(1);
