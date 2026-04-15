@@ -1,4 +1,4 @@
-import Image from 'next/image';
+import ArtifactImageGallery from '@/components/ArtifactImageGallery';
 
 type FlowStep = { label: string; sublabel?: string };
 
@@ -23,76 +23,16 @@ function parseArrayProp<T>(value: T[] | string | undefined): T[] {
   }
 }
 
-function ImageArea({ images, placeholderLabel }: { images: string[]; placeholderLabel?: string }) {
-  if (images.length === 0) {
-    if (!placeholderLabel) return null;
-    return (
-      <div className="relative bg-neutral-800 h-[100px] flex items-center justify-center">
-        <span className="text-sm text-text-muted">{placeholderLabel}</span>
+function PlaceholderArea({ label }: { label: string }) {
+  const isNda = label.toLowerCase().startsWith('nda');
+  return (
+    <div className="relative bg-neutral-800 h-[100px] flex items-center justify-center rounded-t-lg">
+      <span className="text-sm text-text-muted">{label}</span>
+      {isNda && (
         <span className="absolute top-2 right-2 text-xs bg-neutral-700 text-text-muted px-2 py-0.5 rounded-md">
           NDA · no screenshot
         </span>
-      </div>
-    );
-  }
-
-  if (images.length === 1) {
-    return (
-      <div className="relative w-full h-[240px] overflow-hidden rounded-t-lg">
-        <Image
-          src={images[0]}
-          alt=""
-          fill
-          className="object-cover object-top"
-          sizes="(max-width: 768px) 100vw, 768px"
-        />
-      </div>
-    );
-  }
-
-  if (images.length === 2) {
-    return (
-      <div className="grid grid-cols-2 overflow-hidden rounded-t-lg">
-        {images.map((src, i) => (
-          <div key={i} className="relative h-[200px] overflow-hidden">
-            <Image
-              src={src}
-              alt=""
-              fill
-              className="object-cover object-top"
-              sizes="(max-width: 768px) 50vw, 384px"
-            />
-          </div>
-        ))}
-      </div>
-    );
-  }
-
-  // 3 images: asymmetric grid
-  return (
-    <div className="grid grid-cols-2 overflow-hidden rounded-t-lg">
-      <div className="relative h-[260px] overflow-hidden">
-        <Image
-          src={images[0]}
-          alt=""
-          fill
-          className="object-cover object-top"
-          sizes="(max-width: 768px) 50vw, 384px"
-        />
-      </div>
-      <div className="flex flex-col">
-        {[images[1], images[2]].map((src, i) => (
-          <div key={i} className="relative h-[128px] overflow-hidden">
-            <Image
-              src={src}
-              alt=""
-              fill
-              className="object-cover object-top"
-              sizes="(max-width: 768px) 50vw, 384px"
-            />
-          </div>
-        ))}
-      </div>
+      )}
     </div>
   );
 }
@@ -137,7 +77,11 @@ export default function ArtifactCard({
 
   return (
     <div className="bg-bg-card border border-neutral-700 rounded-lg overflow-hidden not-prose mb-6">
-      <ImageArea images={parsedImages} placeholderLabel={placeholderLabel} />
+      {parsedImages.length > 0 ? (
+        <ArtifactImageGallery images={parsedImages} />
+      ) : placeholderLabel ? (
+        <PlaceholderArea label={placeholderLabel} />
+      ) : null}
       <div className="p-5">
         <h3 className="text-lg font-semibold text-text-heading mb-1">{title}</h3>
         <p className="text-xs text-text-muted mb-3">{meta}</p>

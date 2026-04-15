@@ -20,7 +20,8 @@
     "rehype-raw": "^7.0.0",
     "remark": "^15.0.0",
     "remark-gfm": "^4.0.1",
-    "remark-html": "^16.0.0"
+    "remark-html": "^16.0.0",
+    "yet-another-react-lightbox": "^3.31.0"
   },
   "devDependencies": {
     "@types/node": "^20.12.0",
