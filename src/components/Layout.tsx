@@ -36,6 +36,12 @@ export default function Layout({ children }: LayoutProps) {
                 className="text-text-secondary hover:text-text-heading transition-colors"
               >
                 Case Studies
+              </Link>
+              <Link 
+                href="/ai-work" 
+                className="text-text-secondary hover:text-text-heading transition-colors"
+              >
+                AI Work
               </Link>  
               <Link 
                 href="https://resume.varunrajan.com/"
@@ -131,6 +137,13 @@ export default function Layout({ children }: LayoutProps) {
                   className="text-text-secondary hover:text-text-heading transition-colors py-2"
                 >
                   Case Studies
+                </Link>
+                <Link 
+                  href="/ai-work" 
+                  onClick={closeMenu}
+                  className="text-text-secondary hover:text-text-heading transition-colors py-2"
+                >
+                  AI Work
                 </Link>
                 <Link 
                   href="https://resume.varunrajan.com/" 
