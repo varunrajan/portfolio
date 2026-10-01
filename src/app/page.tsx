@@ -11,11 +11,26 @@ export default function Home() {
   const timelineEntries = [
     {
       date: '2025 - Present',
-      company: 'Product Management Consultant and Coach',
+      company: 'Product Builder',
       summary: (
         <>
-          <p><i>Currently:</i> exploring how to best coach product teams to work at their best. <a href="https://conviction.varunrajan.com" target="_blank" rel="noopener noreferrer"> Uplevel your PMs with Conviction Coaching</a>.</p>
-          <p><i>Recently:</i> Led product roadmaping, prioritization, prototyping, and feature development for AdTech analytics startup in the podcast space</p>
+          <p><i>Currently:</i> Owner & Product Lead at <a href="https://sheriffslist.com" target="_blank" rel="noopener noreferrer">Sheriff&apos;s List</a>. I acquired a working MVP that aggregates distressed properties sold at sheriff&apos;s auctions, and I&apos;m growing it by rebuilding discoverability (SEO/AEO), reworking signup and paid conversion, and clearing product debt.</p>
+          <p><i>Also shipping:</i> <a href="https://goofyscoops.varunrajan.com" target="_blank" rel="noopener noreferrer">GoofyScoops</a>, a mobile-first web app households use daily to track pet meals, supplements, and medications. Built solo with Next.js, Supabase, and Vercel, with a public roadmap and continuous releases.</p>
+          <p><i>On the mic:</i> Founder & host of <a href="https://pushpullpodcast.com" target="_blank" rel="noopener noreferrer">Push Pull Podcast</a>: interviews on career transitions, AI, product management, and the future of work. Season 2 is in release.</p>
+        </>
+      ),
+      logos: [
+        { src: '/logos/sheriffs-list.jpeg', alt: "Sheriff's List", label: "Sheriff's List" },
+        { src: '/logos/goofyscoops.webp', alt: 'GoofyScoops', label: 'GoofyScoops' },
+        { src: '/logos/push-pull.jpeg', alt: 'Push Pull Podcast', label: 'Push Pull' },
+      ],
+    },
+    {
+      date: '2025',
+      company: 'Product Management Consultant',
+      summary: (
+        <>
+          <p><i>Recently:</i> Senior PM (contract) at Magellan AI, an AdTech analytics startup in the podcast space. Cut engineering escalations by documenting the stack and mentoring ops staff to self-diagnose, introduced stack-ranked prioritization for high-stakes client proposals, and operationalized an ML pipeline that scores podcast transcripts for content quality.</p>
           <p><i>Bit earlier:</i> Ran pilot program encouraging K12 students to build resilience through guided AI prompts and reflections</p>
         </>
       ),
