@@ -19,6 +19,11 @@ export default function Home() {
           <p><i>On the mic:</i> Founder & host of <a href="https://pushpullpodcast.com" target="_blank" rel="noopener noreferrer">Push Pull Podcast</a>: interviews on career transitions, AI, product management, and the future of work. Season 2 is in release.</p>
         </>
       ),
+      logos: [
+        { src: '/logos/sheriffs-list.jpeg', alt: "Sheriff's List", label: "Sheriff's List" },
+        { src: '/logos/goofyscoops.webp', alt: 'GoofyScoops', label: 'GoofyScoops' },
+        { src: '/logos/push-pull.jpeg', alt: 'Push Pull Podcast', label: 'Push Pull' },
+      ],
     },
     {
       date: '2025',
